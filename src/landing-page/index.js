@@ -2,6 +2,8 @@ import "./index.css";
 import NavBar from "../navbar-component/index.js";
 import LandingDonate from "./LandingDonate.js";
 import LandingFind from "./LandingFind.js";
+import React from 'react';
+// import { FontAwesomeIcon } from '@fortawesome/fontawesome-free';
 
 function LandingPage() {
     return (
@@ -16,11 +18,20 @@ function LandingPage() {
             </div>
 
             <div className="row p-0 m-0">
-                <div className="col-6">
-                    <LandingDonate/>
+                <div className="p-5">
+                    {/*<FontAwesomeIcon icon="fa-solid fa-handshake-simple" />*/}
+                    icon for holding hands<br/>
+                    Join Us to start making a difference! <a href="#">login/register</a>
                 </div>
                 <div className="col-6">
-                    <LandingFind/>
+                    <div className="ws-landing-card d-inline-block">
+                        <LandingDonate/>
+                    </div>
+                </div>
+                <div className="col-6">
+                    <div className="ws-landing-card d-inline-block">
+                        <LandingFind/>
+                    </div>
                 </div>
             </div>
         </>
