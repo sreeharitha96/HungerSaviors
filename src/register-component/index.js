@@ -57,9 +57,13 @@ function Register() {
           <div className="container" style={centerDiv}>
             <div className="row">
               <h1 style={headerStyle}>Register</h1>
-              <p style={headerStyle}> I'm a professional</p>
+              {/* <p style={headerStyle}> I'm a professional</p> */}
               <div className="container">
-              <form>
+                <form>
+                    <div>
+                        <input type="radio" value="donor" name="user-type"/>Donor
+                        <input type="radio" value="customer" name="user-type"/>Customer
+                    </div>
                     <div className='form-group' style={forms}>
                         <label htmlFor="register-name">Name</label>
                         <input type="text" className="forms" placeholder="Enter name" id="register-name"/> 

@@ -60,13 +60,17 @@ function Login() {
               <p style={headerStyle}> I'm a professional</p>
               <div className="container">
                 <form>
+                    <div>
+                      <input type="radio" value="donor" name="user-type"/>Donor
+                      <input type="radio" value="customer" name="user-type"/>Customer
+                    </div>
                     <div className='form-group' style={forms}>
-                        <label htmlFor="login-email">Email address</label>
-                        <input type="email" className="forms" placeholder="Enter email" id="login-email"/> 
+                      <label htmlFor="login-email">Email address</label>
+                      <input type="email" className="forms" placeholder="Enter email" id="login-email"/> 
                     </div>
                     <div className="form-group" style={forms}>
-                        <label htmlFor="login-password">Password</label>
-                        <input type="password" className="forms" placeholder="Password" id="login-password"/>
+                      <label htmlFor="login-password">Password</label>
+                      <input type="password" className="forms" placeholder="Password" id="login-password"/>
                     </div>
                     <button type="submit" style={submitButton}>Submit</button>
                     <div className="container" style={alignToCenter} fluid>
