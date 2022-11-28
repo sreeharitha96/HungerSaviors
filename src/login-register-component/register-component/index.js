@@ -1,6 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {registerThunk} from "../../users/user-thunks.js"
+
 
 function Register() {
+
+  const [name, setName] = useState('admin')
+  const [email, setEmail] = useState('admin@admin.com')
+    const [password, setPassword] = useState('admin@123')
+    const [validatePassword, setValidatePassword] = useState('admin@123')
+    const [error, setError] = useState(null)
+    const {currentUser} = useSelector((state) => state.users)
+    const dispatch = useDispatch()
+    const handleRegisterBtn = () => {
+        if (password !== validatePassword) {
+            setError('Passwords must match')
+            return
+        }
+        setError(null)
+        const newUser = {name, email, password}
+        dispatch(registerThunk(newUser))
+    }
+
   const container1 = {
     height: '100%',
   };
@@ -20,12 +41,6 @@ function Register() {
     justifyContent: 'center',
   };
 
-//   const alignToCenter = {
-//     display: 'flex',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//   };
-
   const headerStyle = {
     color: '#ffffff',
   };
@@ -44,11 +59,6 @@ function Register() {
     padding: '10px 40px',
   };
 
-//   const forgotPassword = {
-//     color: '#EA7035',
-//     marginTop: '20px',
-//   };
-
   return (
     <div className="container" style={container1} fluid>
       <div className="row"style={{ height: '100%' }}>
@@ -59,6 +69,12 @@ function Register() {
               <h1 style={headerStyle}>Register</h1>
               {/* <p style={headerStyle}> I'm a professional</p> */}
               <div className="container">
+                {
+                  error &&
+                  <div className="alert alert-danger">
+                      {error}
+                  </div>
+                }
                 <form>
                     <div>
                         <input type="radio" value="donor" name="user-type"/>Donor
@@ -66,22 +82,27 @@ function Register() {
                     </div>
                     <div className='form-group' style={forms}>
                         <label htmlFor="register-name">Name</label>
-                        <input type="text" className="forms" placeholder="Enter name" id="register-name"/> 
+                        <input type="text" className="forms" placeholder="Enter name" id="register-name" onChange={(e) => setName(e.target.value)}/> 
                     </div>
                     <div className='form-group' style={forms}>
                         <label htmlFor="register-email">Email address</label>
-                        <input type="email" className="forms" placeholder="Enter email" id="register-email"/> 
+                        <input type="email" className="forms" placeholder="Enter email" id="register-email" onChange={(e) => setEmail(e.target.value)}/> 
                     </div>
                     <div className="form-group" style={forms}>
                         <label htmlFor="register-password">Password</label>
-                        <input type="password" className="forms" placeholder="Password" id="register-password"/>
+                        <input type="password" className="forms" placeholder="Password" id="register-password" onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <div className="form-group" style={forms}>
                         <label htmlFor="register-password-re-enter">Re-enter Password</label>
-                        <input type="password" className="forms" placeholder="Password" id="register-password-re-enter"/>
+                        <input type="password" className="forms" placeholder="Password" id="register-password-re-enter" onChange={(e) => setValidatePassword(e.target.value)}/>
                     </div>
-                    <button type="submit" style={submitButton}>Register</button>
+                    <button type="submit" style={submitButton} onClick={handleRegisterBtn}>Register</button>
                 </form>
+
+                {
+                  currentUser &&
+                  <h2>Welcome {currentUser.username}</h2>
+                }
               </div>
             </div>
           </div>

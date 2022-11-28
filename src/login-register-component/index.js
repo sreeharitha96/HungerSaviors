@@ -1,7 +1,7 @@
 import React from 'react';
 import {Tabs, Tab} from 'react-bootstrap';
-import Login from '../login-component';
-import Register from '../register-component';
+import Login from './login-component';
+import Register from './register-component';
 
 function LoginRegister() {
   const container1 = {
