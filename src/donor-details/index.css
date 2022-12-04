@@ -1,0 +1,19 @@
+.wd-img-overlap {
+    position: relative;
+    top: -100px;
+    /*left: -25%;*/
+}
+.image-container{
+    position: relative;
+}
+.main_image{
+    width: 100%;
+    height: 100%;
+}
+.overlay_image{
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    width: 100px;
+    height: 100px;
+}

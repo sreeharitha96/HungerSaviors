@@ -1,10 +1,12 @@
 import { createSlice} from "@reduxjs/toolkit";
 // import donorArray from "../data/donor.json";
-import {findDonorThunk} from "../services/donor-thunks";
+import {findDonorByIdThunk, findDonorThunk} from "../services/donor-thunks";
 
 const initialState = {
     donors: [],
-    loading: false
+    loading: false,
+    donor:[],
+    loading2: false
 }
 
 const donorSlice = createSlice({
@@ -24,7 +26,18 @@ const donorSlice = createSlice({
         [findDonorThunk.rejected]:
             (state) => {
             state.loading = false
-            }
+            },
+        [findDonorByIdThunk.pending]: (state) => {
+            state.loading2 = true
+            state.donor = []
+        },
+        [findDonorByIdThunk.fulfilled]: (state, action) => {
+            state.loading2 = false
+            state.donor = action.payload
+        },
+        [findDonorByIdThunk.rejected]: (state) => {
+            state.loading2 = true
+        }
     }
                                });
 export default donorSlice.reducer;

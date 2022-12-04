@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const DonorItem = (
     {
@@ -7,6 +8,7 @@ const DonorItem = (
             name: "restaurant1",
             location: "boston",
             image: "changing-lifes.jpg",
+            dp: "logo.png",
             about : "about the donor1",
             followers: 123,
             following: 234,
@@ -28,19 +30,21 @@ const DonorItem = (
     }
 ) => {
     return(
-        <div className="col-12 col-md-6 col-xl-4 pb-3">
-            <div className="card text-start">
-                <img src={`/images/${donor.image}`} className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <div className="row">
-                        <h6 className="col-8">{donor.name}</h6>
-                        <h6 className="col-4 small text-end">{donor.rating}</h6>
+        <Link to={`/donor/${donor._id}`} className="text-decoration-none">
+            <div className="col-12 col-md-6 col-xl-4 pb-3">
+                <div className="card text-start">
+                    <img src={`/images/${donor.image}`} className="card-img-top" alt="..."/>
+                    <div className="card-body">
+                        <div className="row">
+                            <h6 className="col-8">{donor.name}</h6>
+                            <h6 className="col-4 small text-end">{donor.rating}</h6>
+                        </div>
+                        <h6 className="small text-muted">{donor.location}</h6>
+                        <div className="small text-muted">Open: {donor.storetimings}</div>
                     </div>
-                    <h6 className="small text-muted">{donor.location}</h6>
-                    <div className="small text-muted">Open: {donor.storetimings}</div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
