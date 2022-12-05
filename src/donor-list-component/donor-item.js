@@ -33,7 +33,7 @@ const DonorItem = (
         <Link to={`/donor/${donor._id}`} className="text-decoration-none">
             <div className="pb-3">
                 <div className="card text-start">
-                    <img src={`/images/${donor.image}`} className="card-img-top" alt="..."/>
+                    <img src={`/images/${donor.image}`} className="card-img-top" height="200px" alt="..."/>
                     <div className="card-body">
                         <div className="row">
                             <h6 className="col-8">{donor.name}</h6>
