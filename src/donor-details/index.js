@@ -4,7 +4,6 @@ import {findDonorByIdThunk, findDonorThunk} from "../services/donor-thunks";
 import {json, Link, useLocation} from "react-router-dom";
 import "./index.css";
 import InventoryItem from "./inventory-item";
-import DonorItem from "../donor-list-component/donor-item";
 
 const DonorDetails = () => {
     const {pathname} = useLocation();
@@ -41,12 +40,6 @@ const DonorDetails = () => {
 
             {
                 <div className="container ps-5 pe-5">
-                    {/*<img className="w-100 mt-2 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>*/}
-                    {/*<div className="d-inline-block w-100 h-25">*/}
-                    {/*    <img className="wd-img-overlap w-25 h-25 rounded-pill float-start" src={`/images/${donor.dp}`} alt="profile"/>*/}
-                    {/*</div>*/}
-
-
                     <div className="image-container">
                         <div className="main_image">
                             <img className="w-100 mt-2 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
@@ -57,24 +50,20 @@ const DonorDetails = () => {
                     </div>
 
                     <div className="d-inline-block float-start text-start w-100">
-                        <h3>Restaurant Name</h3>
+                        <h3>{donor.name}</h3>
                         <div className="row d-block">
-                            <span>address</span> . <span>rating</span>
+                            <span>{donor.location}</span> . <span>{donor.rating}</span>
                         </div>
                         <div className="row d-block">
-                            <span>Location</span> . <span>Link for maps</span>
+                            <span>Address</span> . <span>Link for maps</span>
                         </div>
                     </div><br/>
                     <div className="row d-block text-start">
                         <h5>Inventory Available</h5>
                     </div>
-                    <div className="d-inline text-start">
-                        <div className="list-group">
-
+                    <div className="text-start">
+                        <div className="row">
                             <InventoryItem key={donor._id} food={donor.foodavailable}/>
-
-                            {/*<InventoryItem/>*/}
-                            {/*<InventoryItem/>*/}
                         </div>
                     </div>
 

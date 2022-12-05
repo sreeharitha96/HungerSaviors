@@ -21,16 +21,16 @@ const DonorList = () => {
             </h2>
             <div className="container">
 
-                <ul className="list-group">
+                <div className="row">
                     {
-                        loading && <li className="list-group-item">
+                        loading && <div>
                             Loading...
-                        </li>
+                        </div>
                     }
                     {
-                        donors.map(donor => <DonorItem key={donor._id} donor={donor}/>)
+                        donors.map(donor => <div className="col-12 col-md-6 col-xl-4"> <DonorItem key={donor._id} donor={donor}/></div>)
                     }
-                </ul>
+                </div>
             </div>
         </>
 

@@ -31,7 +31,7 @@ const DonorItem = (
 ) => {
     return(
         <Link to={`/donor/${donor._id}`} className="text-decoration-none">
-            <div className="col-12 col-md-6 col-xl-4 pb-3">
+            <div className="pb-3">
                 <div className="card text-start">
                     <img src={`/images/${donor.image}`} className="card-img-top" alt="..."/>
                     <div className="card-body">
