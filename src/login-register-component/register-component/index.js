@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {registerThunk} from "../../users/user-thunks.js"
+import { Button } from 'react-bootstrap';
 
 
 function Register() {
 
-  const [name, setName] = useState('admin')
+  const [userName, setName] = useState('admin')
   const [email, setEmail] = useState('admin@admin.com')
     const [password, setPassword] = useState('admin@123')
     const [validatePassword, setValidatePassword] = useState('admin@123')
@@ -18,7 +19,7 @@ function Register() {
             return
         }
         setError(null)
-        const newUser = {name, email, password}
+        const newUser = {userName, email, password}
         dispatch(registerThunk(newUser))
     }
 
@@ -96,12 +97,12 @@ function Register() {
                         <label htmlFor="register-password-re-enter">Re-enter Password</label>
                         <input type="password" className="forms" placeholder="Password" id="register-password-re-enter" onChange={(e) => setValidatePassword(e.target.value)}/>
                     </div>
-                    <button type="submit" style={submitButton} onClick={handleRegisterBtn}>Register</button>
+                    <Button style={submitButton} onClick={handleRegisterBtn}>Register</Button>
                 </form>
 
                 {
                   currentUser &&
-                  <h2>Welcome {currentUser.username}</h2>
+                  <h2>Welcome {currentUser.userName}</h2>
                 }
               </div>
             </div>

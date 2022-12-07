@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {loginThunk} from '../../users/user-thunks.js'
+import { Button } from 'react-bootstrap';
 
 function Login() {
 
-    const [username, setUsername] = useState('admin')
+    const [userName, setUsername] = useState('admin')
     const [password, setPassword] = useState('admin@123')
     const [error, setError] = useState(null)
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
+
+
     const handleLoginBtn = () => {
+      console.log("in handle click")
         setError(null)
-        const loginUser = {username, password}
+        const loginUser = {userName, password}
+        console.log("login user: " + JSON.stringify(loginUser))
         dispatch(loginThunk(loginUser))
+    }
+
+    const test = () => {
+      console.log(test)
     }
 
     const container1 = {
@@ -64,7 +73,9 @@ function Login() {
     };
 
     return (
-        <div className="container" style={container1} fluid>
+
+        <div className="container" style={container1}>
+            <p onClick={() => handleLoginBtn()}>test</p>
           <div className="row"style={{ height: '100%' }}>
             <div className="col"style={firstHalf}></div>
             <div className="col"style={secondHalf}>
@@ -85,27 +96,28 @@ function Login() {
                         <input type="radio" value="customer" name="user-type"/>Customer
                       </div>
                       <div className='form-group' style={forms}>
-                        <label htmlFor="login-email">Email address</label>
-                        <input type="email" className="forms" placeholder="Enter email" id="login-email" onChange={(e) => setUsername(e.target.value)}/> 
+                        <label htmlFor="login-username">Username</label>
+                        <input type="text" className="forms" placeholder="Enter username" id="login-username" onChange={(e) => setUsername(e.target.value)}/> 
                       </div>
                       <div className="form-group" style={forms}>
                         <label htmlFor="login-password">Password</label>
                         <input type="password" className="forms" placeholder="Password" id="login-password" onChange={(e) => setPassword(e.target.value)}/>
                       </div>
-                      <button type="submit" style={submitButton} onClick={handleLoginBtn}>Login</button>
+                      <Button style={submitButton} onClick={() => handleLoginBtn()}>Login</Button>
                       {
                         currentUser &&
-                        <h2>Hello {currentUser.username}</h2>
+                        <h2>Hello {currentUser.userName}</h2>
+                        // <h2>Hello</h2>
                       }
-                      <div className="container" style={alignToCenter} fluid>
+                      <div className="container" style={alignToCenter}>
                         <p style={forgotPassword}>Forgot Password?</p>
                       </div>
                     </form>
                   {/* <Form.Control placeholder="Passwords" style={forms} />
-                  <div className="container" style={alignToCenter} fluid>
+                  <div className="container" style={alignToCenter}>
                     <div className="row"style={{ marginTop: '50px' }}>
                       <Button style={submitButton}>Submit</Button>
-                      <div className="container" style={alignToCenter} fluid>
+                      <div className="container" style={alignToCenter}>
                         <p style={forgotPassword}>Forgot Password?</p>
                       </div>
                     </div>
@@ -120,3 +132,4 @@ function Login() {
 }
 
 export default Login;
+

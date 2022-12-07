@@ -9,28 +9,7 @@ function LoginRegister() {
     width: '50%',
     alignItems: 'center',
   };
-  const firstHalf = {
-    backgroundColor: '#F5F3F0',
-    height: '100%',
-  };
-  const secondHalf = {
-    backgroundColor: '#2A4E49',
-    height: '100%',
-    display: 'flex',
-  };
-
-  const centerDiv = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
-
-  const alignToCenter = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  };
-
+  
   return (
     <div className="container" style={container1} fluid>
       <div className="row"style={{ height: '100%' }}>

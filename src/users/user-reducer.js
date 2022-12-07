@@ -17,6 +17,7 @@ const usersReducer = createSlice({
         },
         [loginThunk.fulfilled]: (state, action) => {
             state.currentUser = action.payload
+            console.log("login current user in reducer: " + state.currentUser)
         },
         [loginThunk.rejected]: (state, action) => {
             state.error = action.payload
@@ -24,6 +25,7 @@ const usersReducer = createSlice({
         },
         [registerThunk.fulfilled]: (state, action) => {
             state.currentUser = action.payload
+            console.log("register current user in reducer: " + state.currentUser)
         },
         [registerThunk.rejected]: (state, action) => {
             state.error = action.payload

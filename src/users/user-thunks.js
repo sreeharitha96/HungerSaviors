@@ -20,6 +20,7 @@ export const loginThunk = createAsyncThunk(
     'login',
     async (user) => await login(user)
 )
+
 export const profileThunk = createAsyncThunk(
     'profile',
     async () => await profile()
