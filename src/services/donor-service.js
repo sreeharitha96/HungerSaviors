@@ -15,10 +15,8 @@ export const findDonors = async () => {
     return donors;
 }
 export const findDonorById = async (did) => {
-    console.log("service" + did);
     const response = await axios.get(`${DONOR_API}/${did}`)
     const donor = response.data
-    console.log(donor)
     return donor
 }
 export const deleteDonor = async (did) => {
@@ -28,6 +26,7 @@ export const deleteDonor = async (did) => {
 export const updateDonor = async (donor) => {
     // const response = await axios.put(`${DONOR_API}/${tuit._id}`, tuit)
     // return response.data
+    console.log(donor)
     await axios.put(`${DONOR_API}/${donor._id}`, donor)
     return donor;
 }

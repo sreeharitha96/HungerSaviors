@@ -1,5 +1,7 @@
-import React from "react";
-import InventoryItem from "./inventory-item";
+import React, {useState} from "react";
+import InventoryItemDonor from "../inventory/inventory-donor-view";
+import InventoryItemEdit from "../inventory/inventory-item-edit";
+import {useDispatch, useSelector} from "react-redux";
 
 const DonorViewOfDonor = (
     {
@@ -30,6 +32,12 @@ const DonorViewOfDonor = (
       }
   }
 ) => {
+    let [edit, setEdit] = useState(false);
+
+    const editHandler = () => {
+        setEdit(!edit);
+    }
+
     return(
         <div className="container ps-5 pe-5">
             <div className="image-container">
@@ -43,13 +51,29 @@ const DonorViewOfDonor = (
 
             <div className="row d-block text-start">
                 <h5>Inventory Available</h5>
-                <button className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
-                edit
-                </button>
+                {
+                    !edit &&
+                    <button onClick={editHandler} className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
+                        edit
+                    </button>
+                }
+                {
+                    edit &&
+                    <button onClick={editHandler} className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
+                        save
+                    </button>
+                }
             </div>
             <div className="text-start">
                 <div className="row">
-                    <InventoryItem key={donor._id} food={donor.foodavailable}/>
+                    {
+                        !edit &&
+                        <InventoryItemDonor key={donor._id} food={donor.foodavailable}/>
+                    }
+                    {
+                        edit &&
+                        <InventoryItemEdit key={donor._id} donor={donor}/>
+                    }
                 </div>
             </div>
 

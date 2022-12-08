@@ -30,7 +30,7 @@ const DonorItem = (
         }
     }
 ) => {
-    console.log(donor._id)
+    // console.log(donor._id)
     return(
         <Link to={`/donor/${donor._id}`} className="text-decoration-none">
             <div className="pb-3">

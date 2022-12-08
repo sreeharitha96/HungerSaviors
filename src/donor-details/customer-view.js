@@ -1,4 +1,4 @@
-import InventoryItem from "./inventory-item";
+import InventoryItem from "../inventory/inventory-item";
 import React from "react";
 
 const CustomerViewOfDonor = (

@@ -8,8 +8,8 @@ const InventoryItem = (
         }
     }
 ) => {
-    console.log(typeof(food))
-    console.log(food);
+    // console.log(typeof(food))
+    // console.log(food);
     return(
 
         Object.keys(food).map((key, i) => (

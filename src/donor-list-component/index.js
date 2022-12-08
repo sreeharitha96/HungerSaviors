@@ -28,7 +28,8 @@ const DonorList = () => {
                         </div>
                     }
                     {
-                        donors.map(donor => <div className="col-12 col-md-6 col-xl-4"> <DonorItem key={donor._id} donor={donor}/></div>)
+                        // donors.map(donor => <div className="col-12 col-md-6 col-xl-4"> <DonorItem key={donor.userName} donor={donor}/></div>)
+                        donors.map(donor => <div key={donor._id} className="col-12 col-md-6 col-xl-4"> <DonorItem key={donor._id} donor={donor}/></div>)
                     }
                 </div>
             </div>
