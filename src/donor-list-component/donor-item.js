@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 const DonorItem = (
     {
         donor = {
-            _id: 123,
+            _id: "123",
+            userName: "rest1",
             name: "restaurant1",
             location: "boston",
             image: "changing-lifes.jpg",
@@ -29,6 +30,7 @@ const DonorItem = (
         }
     }
 ) => {
+    console.log(donor._id)
     return(
         <Link to={`/donor/${donor._id}`} className="text-decoration-none">
             <div className="pb-3">

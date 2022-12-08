@@ -15,9 +15,10 @@ export const findDonors = async () => {
     return donors;
 }
 export const findDonorById = async (did) => {
+    console.log("service" + did);
     const response = await axios.get(`${DONOR_API}/${did}`)
     const donor = response.data
-    // console.log(donor)
+    console.log(donor)
     return donor
 }
 export const deleteDonor = async (did) => {
