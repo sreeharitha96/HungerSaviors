@@ -48,6 +48,9 @@ const DonorDetails = () => {
                 !customer &&
                 <DonorViewOfDonor key={donor._id} donor={donor}/>
             }
+            <pre>
+                {JSON.stringify(donor, null, 2)}
+            </pre>
         </>
     );
 };

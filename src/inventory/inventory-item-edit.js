@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {updateDonorThunk} from "../services/donor-thunks";
 
@@ -33,63 +33,49 @@ const InventoryItemEdit = (
 ) => {
     let food = donor.foodavailable;
     const dispatch = useDispatch();
+
+    const [val, setVal] = useState('');
+    const handleInput = event => {
+        setVal(event.target.value);
+        console.log('value: '+ val);
+    }
+
     const deleteInventoryHandler = (key) => {
 
-        // const data = {
-        //     "apple pie": 2,
-        //     "pasta": 10,
-        //     "banana": 6
-        // }
-        // const fil = Object.keys(data)
-        // const selectedUser = fil.filter(words => words !== "pasta")
-        // const filteredUsers = Object.keys(data)
-        //     .filter(key => selectedUser.includes(key))
-        //     .reduce((obj, key) => {
-        //         obj[key] = data[key];
-        //         return obj;
-        //     }, {});
-        // console.log(filteredUsers)
+        const foodList = Object.keys(donor.foodavailable)
+        const remainingFood = foodList.filter(words => words !== key)
+        const newfood = Object.keys(donor.foodavailable)
+            .filter(key => remainingFood.includes(key))
+            .reduce((obj, key) => {
+                obj[key] = donor.foodavailable[key];
+                return obj;
+            }, {});
 
-        // let updatedInventory = JSON.parse(donor.foodavailable);
-        // console.log(updatedInventory);
-        // console.log(typeof (updatedInventory))
-        // updatedInventory = JSON.parse(updatedInventory);
-        // delete updatedInventory[key];
-        // console.log(updatedInventory);
+        let newDonor = {
+            ...donor,
+            foodavailable: newfood
+        }
+        dispatch(updateDonorThunk(newDonor));
+    }
 
-        // let newfood = {
-        //     "pasta": 10
-        // }
-
-
-        // const foodList = Object.keys(donor.foodavailable)
-        // const selectedUser = foodList.filter(words => words !== key)
-        // const newfood = Object.keys(donor.foodavailable)
-        //     .filter(key => selectedUser.includes(key))
-        //     .reduce((obj, key) => {
-        //         obj[key] = donor.foodavailable[key];
-        //         return obj;
-        //     }, {});
-        // console.log(newfood)
-
-
-        // let newInv = {
-        //     "apple pie": 2,
-        //     "pasta": 10,
-        //     "banana": 6
-        // }
-        // console.log(typeof (newInv))
-        // let newfood = newInv.filter(deleteInv);
-        // console.log(newfood)
-        // function deleteInv(inv) {
-        //     return inv !== key;
-        // }
-
-        // let newDonor = {
-        //     ...donor,
-        //     foodavailable: newfood
-        // }
-        // dispatch(updateDonorThunk(newDonor));
+    const updateInventoryHandler = (key) => {
+        // console.log(key)
+        // console.log(typeof key)
+        // console.log(val)
+        if(val !== '') {
+            let newInv = {
+                ...donor.foodavailable,
+                [key] : parseInt(val)
+            }
+            console.log(newInv)
+            let newDonor = {
+                ...donor,
+                foodavailable: newInv
+            }
+            // console.log(typeof(newDonor._id))
+            dispatch(updateDonorThunk(newDonor));
+            setVal('');
+        }
     }
 
     return(
@@ -102,18 +88,18 @@ const InventoryItemEdit = (
                             <i className="bi bi-x float-end"
                                onClick={() => deleteInventoryHandler(key)}></i></div>
                     </div>
-                    {/*onClick={() => deleteInventoryHandler(key)}*/}
-                    {/*onClick={() => deleteTuitHandler(tuit._id)}*/}
                     <div className="row">
                         <div className="col-8">{key}</div>
                         <div className="col-4"><span className="float-end">Quantity: {food[key]}</span></div>
                     </div>
                     <div className="row">
                         <form className="col-8">
-                            <label name="quantity">Available: </label>
-                            <input htmlFor="quantity" type="number" placeholder={food[key]} min="0"/>
+                            <label htmlFor={key}>Available: </label>
+                            <input id={key} onChange={handleInput}
+                                   type="number" defaultValue={food[key]} min="0"/>
                         </form>
-                        <div className="col-4"><button className="rounded-pill float-end">update</button></div>
+                        <div className="col-4"><button className="rounded-pill float-end"
+                           onClick={() => updateInventoryHandler(key)}>update</button></div>
                     </div>
                 </div>
             </div>
