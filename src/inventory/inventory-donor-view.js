@@ -12,9 +12,6 @@ const InventoryItemDonor = (
 
         Object.keys(food).map((key, i) => (
             <div key={i} className="p-1 col-12 col-lg-6">
-
-                Something is happening here with keys
-
                 <div className="card text-start p-1">
                     <div className="row">
                         <div className="col-8">{key}</div>

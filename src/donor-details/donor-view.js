@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import InventoryItemDonor from "../inventory/inventory-donor-view";
-import InventoryItemEdit from "../inventory/inventory-item-edit";
-import {useDispatch, useSelector} from "react-redux";
+import InventoryAddItem from "../inventory/inventory-add-item";
 
 const DonorViewOfDonor = (
     {
@@ -53,13 +52,15 @@ const DonorViewOfDonor = (
                 <h5>Inventory Available</h5>
                 {
                     !edit &&
-                    <button onClick={editHandler} className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
+                    <button onClick={editHandler}
+                        className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
                         edit
                     </button>
                 }
                 {
                     edit &&
-                    <button onClick={editHandler} className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
+                    <button onClick={editHandler}
+                        className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
                         save
                     </button>
                 }
@@ -72,7 +73,7 @@ const DonorViewOfDonor = (
                     }
                     {
                         edit &&
-                        <InventoryItemEdit key={donor._id} donor={donor}/>
+                        <InventoryAddItem key={donor._id} donor={donor}/>
                     }
                 </div>
             </div>

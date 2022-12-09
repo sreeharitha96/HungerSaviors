@@ -24,9 +24,8 @@ export const deleteDonor = async (did) => {
     return response.data
 }
 export const updateDonor = async (donor) => {
-    // const response = await axios.put(`${DONOR_API}/${tuit._id}`, tuit)
+    // const response = await axios.put(`${DONOR_API}/${donor._id}`, donor)
     // return response.data
-    console.log(donor)
     await axios.put(`${DONOR_API}/${donor._id}`, donor)
     return donor;
 }

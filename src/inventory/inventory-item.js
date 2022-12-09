@@ -13,8 +13,8 @@ const InventoryItem = (
     return(
 
         Object.keys(food).map((key, i) => (
-            <div className="p-1 col-12 col-lg-6">
-                <div key={i} className="card text-start p-1">
+            <div key={i} className="p-1 col-12 col-lg-6">
+                <div className="card text-start p-1">
                     <div className="row">
                         <div className="col-8">{key}</div>
                         <div className="col-4"><span className="float-end">Available: {food[key]}</span></div>

@@ -46,7 +46,7 @@ const EditInventory = (
             </div>
             <div className="text-start">
                 <div className="row">
-                    <InventoryItemEdit key={donor._id} food={donor.foodavailable}/>
+                    <InventoryItemEdit key={donor._id} donor={donor}/>
                 </div>
             </div>
 

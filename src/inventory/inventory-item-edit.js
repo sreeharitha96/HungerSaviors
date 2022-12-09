@@ -37,7 +37,6 @@ const InventoryItemEdit = (
     const [val, setVal] = useState('');
     const handleInput = event => {
         setVal(event.target.value);
-        console.log('value: '+ val);
     }
 
     const deleteInventoryHandler = (key) => {
@@ -59,15 +58,11 @@ const InventoryItemEdit = (
     }
 
     const updateInventoryHandler = (key) => {
-        // console.log(key)
-        // console.log(typeof key)
-        // console.log(val)
         if(val !== '') {
             let newInv = {
                 ...donor.foodavailable,
                 [key] : parseInt(val)
             }
-            console.log(newInv)
             let newDonor = {
                 ...donor,
                 foodavailable: newInv
@@ -79,7 +74,6 @@ const InventoryItemEdit = (
     }
 
     return(
-
         Object.keys(food).map((key, i) => (
             <div key={i} className="p-1 col-12 col-lg-6">
                 <div className="card text-start p-1 pt-0">
@@ -103,10 +97,8 @@ const InventoryItemEdit = (
                     </div>
                 </div>
             </div>
-
-        ))
-
-
+            )
+        )
     )
 }
 
