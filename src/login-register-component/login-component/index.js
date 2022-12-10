@@ -8,17 +8,13 @@ function Login() {
 
     const [userName, setUsername] = useState('admin')
     const [password, setPassword] = useState('admin@123')
-    const [error, setError] = useState(null)
-    console.log(useSelector((state) => state))
-    const {currentUser} = useSelector((state) => state.users)
+    const {currentUser, error} = useSelector((state) => state.users)
+
     const dispatch = useDispatch()
 
 
     const handleLoginBtn = () => {
-      console.log("in handle click")
-        setError(null)
         const loginUser = {userName, password}
-        console.log("login user: " + JSON.stringify(loginUser))
         dispatch(loginThunk(loginUser), [dispatch])
     }
 
@@ -110,9 +106,6 @@ function Login() {
                         currentUser &&
                         currentUser.role === 'DONOR' &&
                         <Navigate to={`/donor/${currentUser.userName}`}/>
-                      }
-                      {
-                        !currentUser && <Navigate to="/login"/>
                       }
                       <div className="container" style={alignToCenter}>
                         <p style={forgotPassword}>Forgot Password?</p>
