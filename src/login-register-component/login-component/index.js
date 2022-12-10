@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {loginThunk} from '../../users/user-thunks.js'
 import { Button } from 'react-bootstrap';
+import { Navigate } from 'react-router';
 
 function Login() {
 
     const [userName, setUsername] = useState('admin')
     const [password, setPassword] = useState('admin@123')
     const [error, setError] = useState(null)
+    console.log(useSelector((state) => state))
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
 
@@ -101,8 +103,9 @@ function Login() {
                       <Button style={submitButton} onClick={() => handleLoginBtn()}>Login</Button>
                       {
                         currentUser &&
-                        <h2>Hello {currentUser.userName}</h2>
-                        // <h2>Hello</h2>
+                        currentUser.role === 'CUSTOMER' ?
+                        <Navigate to="/home"/> : <Navigate to="/donor"/>
+                        // to={`/donor/${currentUser.userName}`}/>
                       }
                       <div className="container" style={alignToCenter}>
                         <p style={forgotPassword}>Forgot Password?</p>

@@ -1,0 +1,19 @@
+.ws-background{
+    /*background-image: url("../../public/images/italian-ingredients.webp");*/
+    background-image: url("../../public/images/italian-ingredients.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.ws-overlap{
+    height: 100vh;
+}
+.ws-nav-bar{
+    opacity: 0.95;
+}
+.ws-logo{
+    width:50px;
+}
+.ws-landing-card{
+    background-color: #61dafb;
+    width: 80%;
+}

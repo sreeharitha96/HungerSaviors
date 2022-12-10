@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { registerThunk } from '../../../users/user-thunks';
 import { Button } from 'react-bootstrap';
-import Maps from '../../../map-component'
+
+// import Maps from '../../../map-component'
 
 function RegisterCustomer() {
 
@@ -108,14 +109,14 @@ function RegisterCustomer() {
                         <label htmlFor="register-password-re-enter">Re-enter Password</label>
                         <input type="password" className="forms" placeholder="Password" id="register-password-re-enter" onChange={(e) => setValidatePassword(e.target.value)}/>
                     </div>
-                    {/* <div className="form-group" style={forms}> */}
-                        {/* <label htmlFor="register-location">Enter location</label>
-                        <input type="text" className="forms" placeholder="location" id="register-location" onChange={(e) => setLocation(e.target.value)}/> */}
-                        <div>
-                            <Button style={submitButton} onClick={(e) => setLocationButton(true)}>Set location</Button>
-                            { locationButton && <Maps/> }
-                        </div>
-                    {/* </div> */}
+                    <div className="form-group" style={forms}>
+                        <label htmlFor="register-location">Enter location</label>
+                        <input type="text" className="forms" placeholder="location" id="register-location" onChange={(e) => setLocation(e.target.value)}/>
+                        {/* <div> */}
+                            {/* <Button style={submitButton} onClick={(e) => setLocationButton(true)}>Set location</Button> */}
+                            {/* { locationButton && <Maps/> } */}
+                        {/* </div> */}
+                    </div>
                     <div className="form-group" style={forms}>
                         <label htmlFor="register-dob">Enter date of birth</label>
                         <input type="date" className="forms" id="register-dob" onChange={(e) => setDateOfBirth(e.target.value)}/>
