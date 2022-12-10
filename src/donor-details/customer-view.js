@@ -2,40 +2,12 @@ import React, {useEffect, useReducer, useState} from "react";
 import {Button} from "react-bootstrap";
 import OrderItem from "../inventory/order-item";
 import {useDispatch} from "react-redux";
-import {getElement} from "bootstrap/js/src/util";
+import {createOrderThunk} from "../services/order-thunks";
 
-const CustomerViewOfDonor = (
-    {
-        donor = {
-            _id: "123",
-            userName: "rest1",
-            name: "restaurant1",
-            location: "boston",
-            image: "changing-lifes.jpg",
-            dp: "logo.png",
-            about : "about the donor1",
-            followers: 123,
-            following: 234,
-            liked: true,
-            likes: 14,
-            rating: 4.2,
-            foodavailable: {
-                "apple pie": 2,
-                "pasta": 10
-            },
-            foodavailabilityposts: "array",
-            storetimings:"10:00am to 9:00pm",
-            rewardpoints: 987,
-            foodreviews: {
-                "review1": "best place!",
-                "review2": "decent place to find food"
-            }
-        }
-    }
-) => {
+const CustomerViewOfDonor = ({donor}) => {
+    const user = "user1"
     const [showInv, setShowInv] = useState(false);
     const [cart, setCart] = useState({})
-    const [test, setTest] = useState(false);
     const showInvHandler = () => {
         setShowInv(!showInv);
     }
@@ -43,37 +15,15 @@ const CustomerViewOfDonor = (
     let food = donor.foodavailable;
     const dispatch = useDispatch();
 
-    // const [val, setVal] = useState('');
-    // const handleInput = event => {
-    //     setVal(event.target.value);
-    // }
-
     const addOrderHandler = (key, avail) => {
         const quant =  document.getElementById(key).value;
-        if(quant !== '' && quant <= avail) {
-            cart[key] = parseInt(quant);
+        if(quant !== '' && quant <= avail && quant !== 0) {
+            setCart({ ...cart, [key]: quant });
         }
-        if(!test){
-            setTest(true)
-        } else {
-            setTest(false)
-        }
-        console.log(cart)
-        // forceUpdate()
-        setOrder(true);
+        setOrder(true)
     }
 
-    useEffect(() => {
-
-        PlaceOrderHandler()
-
-
-    }, [cart])
-
-    const PlaceOrderHandler = () => {
-        console.log(cart + "insert")
-
-
+    const UpdateOrderHandler = () => {
        return (
             <div className="col-3">
                 <div className="card">
@@ -81,19 +31,20 @@ const CustomerViewOfDonor = (
                     <br/>
                     <OrderItem order={cart}/>
                     <br/>
-                    <Button className="btn-dark">Place order</Button>
+                    <Button className="btn-dark" onClick={placeOrderHandler}>Place order</Button>
                 </div>
             </div>
-
-
        )
     }
 
-    // const addToCrt = () => {
-    //     return (
-    //
-    //     )
-    // }
+    const placeOrderHandler = () => {
+        const newOrder = {"donorUserName": donor.userName,
+            "customerUserName": user,
+            "status": "COMPLETED",
+            "orderList": cart
+        }
+        dispatch(createOrderThunk(newOrder))
+    }
 
     return(
         <div className="ps-5 pe-5 row mt-2">
@@ -158,8 +109,7 @@ const CustomerViewOfDonor = (
             }
             </div>
             {
-               showInv && order && <PlaceOrderHandler />
-
+               showInv && order && <UpdateOrderHandler />
             }
 
         </div>

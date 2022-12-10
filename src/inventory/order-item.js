@@ -1,7 +1,6 @@
 import React from "react";
 
 const OrderItem = ({order}) => {
-    console.log(order + "test")
     return(
             Object.entries(order).map((key, i) => (
               <div key={i} className="p-1 col-12 col-lg-6">

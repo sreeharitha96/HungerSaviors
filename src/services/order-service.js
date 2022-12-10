@@ -4,6 +4,7 @@ const ORDER_API = 'http://localhost:4000/api/orders';
 
 export const createOrder = async (order) => {
     const response = await axios.post(ORDER_API, order)
+    console.log(order)
     return response.data;
 }
 export const findOrders = async () => {
