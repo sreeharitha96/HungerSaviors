@@ -1,12 +1,13 @@
-import React from 'react';
-import NavBar from "../navbar-component";
+import React from 'react'; 
+import UserProfilePage from './user-profile.js';
 
-function ProfilePage() {
-    return (
-        <>
-            <h1>Profile Page</h1>
-        </>
-    )
+function ProfilePage(){
+return(
+    <div>
+    <UserProfilePage/>
+    </div>
+
+);
 }
 
 export default ProfilePage;

@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import Search from "../search";
 
 function NavBar() {
     return (
@@ -23,6 +24,9 @@ function NavBar() {
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link disabled" href="#">Disabled</a>
+                                </li>
+                                <li>
+                                    <Search/>
                                 </li>
                             </ul>
 
