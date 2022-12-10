@@ -7,7 +7,8 @@ import DonorViewOfDonor from "./donor-view";
 import {findDonorByUsernameThunk} from "../services/donor-thunks";
 
 const DonorDetails = () => {
-    const customer = false;
+    const customer = true;
+
     const {pathname} = useLocation();
     const paths = pathname.split('/')
     const donorID = paths[2];
@@ -28,13 +29,15 @@ const DonorDetails = () => {
                      </li>
             }
             {
-                customer &&
-                // console.log(donor) &&
-                <CustomerViewOfDonor key={donor._id} donor={donor}/>
-            }
-            {
                 !customer &&
                 <DonorViewOfDonor key={donor._id} donor={donor}/>
+            }
+            {
+                customer &&
+                <CustomerViewOfDonor key={donor._id} donor={donor}/>
+                // <CustomerViewOfDonor key={donor._id} donor={donor}/>
+                // <CustomerViewOfDonorNew key={donor._id}/>
+                // <CustomerViewOfDonorNew2 key={donor._id} donor={donor}/>
             }
             {/*<pre>*/}
             {/*    {JSON.stringify(donor, null, 2)}*/}
