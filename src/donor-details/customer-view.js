@@ -30,6 +30,7 @@ const CustomerViewOfDonor = (
         }
     }
 ) => {
+    console.log(donor)
     return(
         <div className="container ps-5 pe-5">
             <div className="image-container">

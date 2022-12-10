@@ -6,9 +6,9 @@ export const findDonorThunk = createAsyncThunk(
     'donor/findDonors', async () =>
         await service.findDonors()
 )
-export const findDonorByIdThunk = createAsyncThunk(
+export const findDonorByUsernameThunk = createAsyncThunk(
     'donor/findDonorById',
-    async(donorId) => await findDonorById(donorId)
+    async(donorId) => await service.findDonorByUsername(donorId)
 )
 export const deleteDonorThunk = createAsyncThunk(
     'donor/deleteDonor', async(donorId) => {

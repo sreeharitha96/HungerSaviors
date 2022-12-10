@@ -14,7 +14,7 @@ export const findDonors = async () => {
     const donors = response.data;
     return donors;
 }
-export const findDonorById = async (did) => {
+export const findDonorByUsername = async (did) => {
     const response = await axios.get(`${DONOR_API}/${did}`)
     const donor = response.data
     return donor

@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {findDonorByIdThunk} from "../services/donor-thunks";
 import {useLocation} from "react-router-dom";
 import "./index.css";
 import CustomerViewOfDonor from "./customer-view";
 import DonorViewOfDonor from "./donor-view";
+import {findDonorByUsernameThunk} from "../services/donor-thunks";
 
 const DonorDetails = () => {
     const customer = false;
@@ -16,10 +16,10 @@ const DonorDetails = () => {
         state => state.donorsData)
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(findDonorByIdThunk(donorID))
+        dispatch(findDonorByUsernameThunk(donorID))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[dispatch])
-    
+
     return(
         <>
             {
@@ -29,6 +29,7 @@ const DonorDetails = () => {
             }
             {
                 customer &&
+                // console.log(donor) &&
                 <CustomerViewOfDonor key={donor._id} donor={donor}/>
             }
             {

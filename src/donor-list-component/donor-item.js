@@ -32,7 +32,7 @@ const DonorItem = (
 ) => {
     // console.log(donor._id)
     return(
-        <Link to={`/donor/${donor._id}`} className="text-decoration-none">
+        <Link to={`/donor/${donor.userName}`} className="text-decoration-none">
             <div className="pb-3">
                 <div className="card text-start">
                     <img src={`/images/${donor.image}`} className="card-img-top" height="200px" alt="..."/>
