@@ -17,10 +17,11 @@ import SearchResults from './search/searchresults';
 import userprofileReducer from "./reducers/userprofile-reducer";
 import editprofileReducer from "./reducers/editprofile-reducer";
 import searchReducer from "./reducers/search-reducer";
+import userReducer from './users/user-reducer';
 
 const store = configureStore(
     {reducer: {
-            donorsData: donorReducer,userprofile: userprofileReducer, profile: editprofileReducer, donors: searchReducer}});
+            donorsData: donorReducer,users: userReducer,userprofile: userprofileReducer, profile: editprofileReducer, donors: searchReducer}});
 
 function App() {
   return (

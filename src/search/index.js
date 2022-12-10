@@ -19,21 +19,21 @@ const Search =() => {
    
 return(
       
-            <nav class="navbar navbar-default">
-        <div class="nav nav-justified navbar-nav ">
+            <nav className="navbar navbar-default">
+        <div className="nav nav-justified navbar-nav ">
  
-            <form class="navbar-form navbar-search" role="search">
-                <div class="input-group">
+            <form className="navbar-form navbar-search" role="search">
+                <div className="input-group">
         
-                    <input type="text" class="form-control" name="city" id="city" 
+                    <input type="text" className="form-control" name="city" id="city" 
                              
                               onChange={(event) => setCityname(event.target.value)}
                                title="enter your phone number if any."/>
                 
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-search btn-info" onClick={handlesearchbycity}>
-                            <span class="glyphicon glyphicon-search"></span>
-                            <span class="label-icon">Search</span>
+                    <div className="input-group-btn">
+                        <button type="button" className="btn btn-search btn-info" onClick={handlesearchbycity}>
+                            <span className="glyphicon glyphicon-search"></span>
+                            <span className="label-icon">Search</span>
                         </button>
                     </div>
 
