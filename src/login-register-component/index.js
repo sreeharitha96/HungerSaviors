@@ -11,7 +11,7 @@ function LoginRegister() {
   };
   
   return (
-    <div className="container" style={container1} fluid>
+    <div className="container" style={container1} fluid="true">
       <div className="row"style={{ height: '100%' }}>
         <Tabs justify variant="pills" defaultActiveKey="tab-1">
             <Tab eventKey="tab-1" title="Login">

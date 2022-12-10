@@ -20,10 +20,6 @@ function Login() {
         dispatch(loginThunk(loginUser))
     }
 
-    const test = () => {
-      console.log(test)
-    }
-
     const container1 = {
       height: '100%',
     };
@@ -75,7 +71,6 @@ function Login() {
     return (
 
         <div className="container" style={container1}>
-            <p onClick={() => handleLoginBtn()}>test</p>
           <div className="row"style={{ height: '100%' }}>
             <div className="col"style={firstHalf}></div>
             <div className="col"style={secondHalf}>
