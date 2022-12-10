@@ -7,7 +7,7 @@ import CustomerViewOfDonor from "./customer-view";
 import DonorViewOfDonor from "./donor-view";
 
 const DonorDetails = () => {
-    const customer = true;
+    const customer = false;
     const {pathname} = useLocation();
     const paths = pathname.split('/')
     const donorID = paths[2];
