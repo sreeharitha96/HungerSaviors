@@ -8,18 +8,14 @@ function Login() {
 
     const [userName, setUsername] = useState('admin')
     const [password, setPassword] = useState('admin@123')
-    const [error, setError] = useState(null)
-    console.log(useSelector((state) => state))
-    const {currentUser} = useSelector((state) => state.users)
+    const {currentUser, error} = useSelector((state) => state.users)
+
     const dispatch = useDispatch()
 
 
     const handleLoginBtn = () => {
-      console.log("in handle click")
-        setError(null)
         const loginUser = {userName, password}
-        console.log("login user: " + JSON.stringify(loginUser))
-        dispatch(loginThunk(loginUser))
+        dispatch(loginThunk(loginUser), [dispatch])
     }
 
     const container1 = {
@@ -69,9 +65,9 @@ function Login() {
       color: '#EA7035',
       marginTop: '20px',
     };
-
+    console.log(currentUser)
     return (
-
+        
         <div className="container" style={container1}>
           <div className="row"style={{ height: '100%' }}>
             <div className="col"style={firstHalf}></div>
@@ -103,9 +99,13 @@ function Login() {
                       <Button style={submitButton} onClick={() => handleLoginBtn()}>Login</Button>
                       {
                         currentUser &&
-                        currentUser.role === 'CUSTOMER' ?
-                        <Navigate to="/home"/> : <Navigate to="/donor"/>
-                        // to={`/donor/${currentUser.userName}`}/>
+                        currentUser.role === 'CUSTOMER' &&
+                        <Navigate to="/home"/>
+                      }
+                      {
+                        currentUser &&
+                        currentUser.role === 'DONOR' &&
+                        <Navigate to={`/donor/${currentUser.userName}`}/>
                       }
                       <div className="container" style={alignToCenter}>
                         <p style={forgotPassword}>Forgot Password?</p>

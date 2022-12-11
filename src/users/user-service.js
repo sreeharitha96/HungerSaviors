@@ -14,13 +14,17 @@ export const findAllUsers = async () => {
 
 export const register = async (user) => {
     const response = await axios.post(`${BASE_URL}/register`, user)
-    console.log("response is: " + JSON.stringify(response.data))
     return response.data
 }
 
 export const login = async (user) => {
-    const response = await axios.post(`${BASE_URL}/login`, user)
-    console.log("response is: " + JSON.stringify(response.data))
+    const response = await axios.post(`${BASE_URL}/login`, user).catch((err) => {
+        return err.response
+    })
+    if(response.status == 403) {
+        return response
+    }
+    
     return response.data
 }
 
