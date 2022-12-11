@@ -9,8 +9,8 @@ export const createDonor = async (donor) => {
     const response = await axios.post(DONOR_API, donor)
     return response.data;
 }
-export const findDonors = async () => {
-    const response = await axios.get(DONOR_API);
+export const findDonors = async (status) => {
+    const response = await axios.get(`${DONOR_API}/status/${status}`)
     const donors = response.data;
     return donors;
 }
@@ -28,4 +28,8 @@ export const updateDonor = async (donor) => {
     // return response.data
     await axios.put(`${DONOR_API}/${donor._id}`, donor)
     return donor;
+}
+export const approveDonor = async (did) => {
+    const response = await axios.patch(`${DONOR_API}/approve/${did}`)
+    return response.data
 }

@@ -6,11 +6,8 @@ import {createOrderThunk} from "../services/order-thunks";
 
 const CustomerViewOfDonor = ({donor}) => {
     const user = "user1"
-    const [showInv, setShowInv] = useState(false);
     const [cart, setCart] = useState({})
-    const showInvHandler = () => {
-        setShowInv(!showInv);
-    }
+
     const [order, setOrder] = useState(false);
     let food = donor.foodavailable;
     const dispatch = useDispatch();
@@ -67,22 +64,12 @@ const CustomerViewOfDonor = ({donor}) => {
                     <span>Address</span> . <span>Link for maps</span>
                 </div>
             </div><br/>
-            {
-                !showInv &&
-                <button onClick={showInvHandler}
-                        className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
-                    show Inventory
-                </button>
-            }
-            {
-                showInv &&
                 <div className="row d-block text-start">
                     <h5>Inventory Available</h5>
-                </div> &&
+                </div>
                 <div className="text-start">
                     <div className="row">
                     {
-                        showInv &&
                         Object.keys(food).map((key, i) => (
                           <div key={i} className="p-1 col-12 col-lg-6">
                               <div className="card text-start p-1 pt-0">
@@ -106,10 +93,9 @@ const CustomerViewOfDonor = ({donor}) => {
                     }
                     </div>
                 </div>
-            }
             </div>
             {
-               showInv && order && <UpdateOrderHandler />
+                order && <UpdateOrderHandler />
             }
 
         </div>

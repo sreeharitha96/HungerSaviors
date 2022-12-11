@@ -4,12 +4,12 @@ import DonorItem from "./donor-item";
 import {useDispatch, useSelector} from "react-redux";
 import {findDonorThunk} from "../services/donor-thunks";
 
-const DonorList = () => {
+const DonorList = ({status}) => {
     const {donors, loading} = useSelector(
         state => state.donorsData)
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(findDonorThunk())
+        dispatch(findDonorThunk(status))
     },[dispatch])
 
     const donorArray = useSelector(

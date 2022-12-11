@@ -3,8 +3,8 @@ import * as service from "./donor-service"
 import {findDonorById} from "./donor-service";
 
 export const findDonorThunk = createAsyncThunk(
-    'donor/findDonors', async () =>
-        await service.findDonors()
+    'donor/findDonors', async (status) =>
+        await service.findDonors(status)
 )
 export const findDonorByUsernameThunk = createAsyncThunk(
     'donor/findDonorById',
@@ -27,5 +27,10 @@ export const updateDonorThunk = createAsyncThunk(
         // return donor._id
         // console.log("thunk: " + donor);
     }
-
+)
+export const approveDonorThunk = createAsyncThunk(
+    'donor/approveDonor', async (donorId) => {
+        await service.approveDonor(donorId)
+        return donorId
+    }
 )

@@ -8,9 +8,9 @@ import {
 
 const initialState = {
     donors: [],
-    loading: false,
+    loading: true,
     donor: [],
-    loading2: false
+    loading2: true
 }
 
 const donorSlice = createSlice({
@@ -48,20 +48,6 @@ const donorSlice = createSlice({
         [updateDonorThunk.fulfilled]: (state, {payload}) => {
             state.loading = false
             state.donor = payload
-            // console.log('payload', payload)
-            // const donorIndex = state.donors.findIndex((donor) =>  {
-            //     console.log(donor)
-            // //    console.log(typeof (donor._id))
-            //     // console.log(typeof (payload._id))
-            //     return donor._id === payload._id
-            // })
-            // console.log('donorIndex')
-            // console.log(donorIndex)
-            // state.donor = payload
-            // {
-            //     ...state.donor[donorIndex],
-            //     ...payload
-            // }
         }
     }
 });
