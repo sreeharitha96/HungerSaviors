@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
-import * as service from "./donor-service"
+import * as service from "./donor-service.js"
 import {findDonorById} from "./donor-service";
 
 export const findDonorThunk = createAsyncThunk(
@@ -8,7 +8,9 @@ export const findDonorThunk = createAsyncThunk(
 )
 export const findDonorByUsernameThunk = createAsyncThunk(
     'donor/findDonorById',
-    async(donorId) => await service.findDonorByUsername(donorId)
+    async(donorId) => {
+        return await service.findDonorByUsername(donorId)
+    }
 )
 export const deleteDonorThunk = createAsyncThunk(
     'donor/deleteDonor', async(donorId) => {

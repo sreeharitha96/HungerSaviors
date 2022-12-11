@@ -10,7 +10,9 @@ const CustomerViewOfDonor = ({donor}) => {
     const [cart, setCart] = useState({})
 
     const [order, setOrder] = useState(false);
-    let food = donor.foodavailable;
+    let food = donor.inventory;
+    console.log('donor: ', donor);
+    console.log('donor.inventory: ', donor.inventory);
     const dispatch = useDispatch();
 
     const addOrderHandler = (key, avail) => {

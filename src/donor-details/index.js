@@ -7,17 +7,23 @@ import DonorViewOfDonor from "./donor-view";
 import {findDonorByUsernameThunk} from "../services/donor-thunks";
 
 const DonorDetails = () => {
-    const customer = true;
+    const currentUser = useSelector((state) => state.users.currentUser);
+    console.log('currentUser: ', currentUser);
 
+    const customer = currentUser.role == 'CUSTOMER';
+    // const customer = false;
     const {pathname} = useLocation();
     const paths = pathname.split('/')
     const donorID = paths[2];
+    // const donorID = currentUser.userName;
+    console.log('donorID: ', donorID);
 
-    const {donor, loading2} = useSelector(
-        state => state.donorsData)
+    const {donor, loading2} = useSelector((state) => state.donorsData)
+    console.log('useSelector(state => state.donorsData): ', useSelector(state => state.donorsData));
+    console.log('donor: ', donor);
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log(donorID)
+        console.log("in use effect s" + donorID)
         dispatch(findDonorByUsernameThunk(donorID))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[dispatch])
