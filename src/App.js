@@ -18,10 +18,16 @@ import userprofileReducer from "./reducers/userprofile-reducer";
 import editprofileReducer from "./reducers/editprofile-reducer";
 import searchReducer from "./reducers/search-reducer";
 import userReducer from './users/user-reducer';
+import orderReducer from "./reducers/order-reducer";
+import AdminPage from "./admin";
 
 const store = configureStore(
     {reducer: {
-            donorsData: donorReducer,users: userReducer,userprofile: userprofileReducer, profile: editprofileReducer, donors: searchReducer}});
+            donorsData: donorReducer,
+            users: userReducer,
+            userprofile: userprofileReducer,
+            profile: editprofileReducer,
+            donors: searchReducer}});
 
 function App() {
   return (
@@ -38,6 +44,7 @@ function App() {
                       <Route path="/search" element={<Search/>}/>
                       <Route path="/searchresults" element={<SearchResults/>}/>
                       <Route path="/donor/*" element={<DonorDetails/>}/>
+                      <Route path="/admin" element={<AdminPage/>}/>
                   </Routes>
               </div>
           </BrowserRouter>

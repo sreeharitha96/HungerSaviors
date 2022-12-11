@@ -1,7 +1,8 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React, {useState} from "react";
+import {useDispatch} from "react-redux";
+import {updateDonorThunk} from "../services/donor-thunks";
 
-const InventoryItem = (
+const InventoryItemOld = (
     {
         donor = {
             _id: "123",
@@ -39,21 +40,21 @@ const InventoryItem = (
     // console.log(donor)
     // console.log(donor.foodavailable)
     // let food = donor.foodavailable;
-    console.log(donor);
+    console.log(donor.foodavailable);
     return(
 
-        Object.keys(food).map((key, i) => (
+        Object.keys(donor.foodavailable).map((key, i) => (
             <div key={i} className="p-1 col-12 col-lg-6">
                 <div className="card text-start p-1">
                     <div className="row">
                         <div className="col-8">{key}</div>
-                        <div className="col-4"><span className="float-end">Available: {food[key]}</span></div>
+                        <div className="col-4"><span className="float-end">Available: {donor.foodavailable[key]}</span></div>
                     </div>
                     <div className="row">
                         <form className="col-8">
                             <label name="quantity">Select: </label>
                             <input htmlFor="quantity" type="number" placeholder="0"
-                                   min="0" max={food[key]}/>
+                                   min="0" max={donor.foodavailable[key]}/>
                         </form>
                         <div className="col-4"><button className="rounded-pill float-end">Add</button></div>
                     </div>
@@ -66,4 +67,4 @@ const InventoryItem = (
     )
 }
 
-export default InventoryItem;
+export default InventoryItemOld;
