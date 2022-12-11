@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, { Fragment } from "react";
 import HomePage from "./home-component/index.js";
 import {BrowserRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
@@ -20,6 +20,7 @@ import searchReducer from "./reducers/search-reducer";
 import userReducer from './users/user-reducer';
 import orderReducer from "./reducers/order-reducer";
 import AdminPage from "./admin";
+import { useSelector } from 'react-redux';
 
 const store = configureStore(
     {reducer: {
@@ -27,9 +28,11 @@ const store = configureStore(
             users: userReducer,
             userprofile: userprofileReducer,
             profile: editprofileReducer,
-            donors: searchReducer}});
+            donors: searchReducer
+        }});
 
 function App() {
+    // const {users} = useSelector((state) => state.users)
   return (
       <Provider store={store}>
           <BrowserRouter>
@@ -38,13 +41,18 @@ function App() {
                   <Routes>
                       <Route path="/" element={<HomePage/>}/>
                       <Route path="/login" element={<LoginRegister/>}/>
-                      <Route path="/profile/*" element={<ProfilePage/>}/>
-                      <Route path="/home" element={<DonorList/>}/>
-                      <Route path="/updateUser" element={<EditUserProfile/>}/>
-                      <Route path="/search" element={<Search/>}/>
-                      <Route path="/searchresults" element={<SearchResults/>}/>
-                      <Route path="/donor/*" element={<DonorDetails/>}/>
-                      <Route path="/admin" element={<AdminPage/>}/>
+                      {
+                        store.getState().users &&
+                      <Fragment>
+                            <Route path="/profile/*" element={<ProfilePage/>}/>
+                            <Route path="/home" element={<DonorList status = {"Approved"}/>}/>
+                            <Route path="/updateUser" element={<EditUserProfile/>}/>
+                            <Route path="/search" element={<Search/>}/>
+                            <Route path="/searchresults" element={<SearchResults/>}/>
+                            <Route path="/donor/*" element={<DonorDetails/>}/>
+                            <Route path="/``admin" element={<AdminPage/>}/>
+                      </Fragment>
+                        }
                   </Routes>
               </div>
           </BrowserRouter>
