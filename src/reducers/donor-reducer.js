@@ -8,7 +8,7 @@ import {
 
 const initialState = {
     donors: [],
-    loading: true,
+    donorsloading: true,
     donor: [],
     loading2: true
 }
@@ -19,16 +19,16 @@ const donorSlice = createSlice({
     extraReducers: {
         [findDonorThunk.pending]:
             (state) => {
-            state.loading = true
+            state.donorsloading = true
             state.donors = []
         },
         [findDonorThunk.fulfilled]:
             (state, {payload}) => {
-            state.loading = false
+            state.donorsloading = false
             state.donors = payload
         },
         [findDonorThunk.rejected]: (state) => {
-            state.loading = false
+            state.donorsloading = false
         },
         [findDonorByUsernameThunk.pending]: (state) => {
             state.loading2 = true
@@ -46,7 +46,7 @@ const donorSlice = createSlice({
             state.loading2 = false
         },
         [updateDonorThunk.fulfilled]: (state, {payload}) => {
-            state.loading = false
+            state.donorsloading = false
             state.donor = payload
         }
     }
