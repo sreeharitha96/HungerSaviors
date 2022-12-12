@@ -11,8 +11,8 @@ const CustomerViewOfDonor = ({donor}) => {
 
     const [order, setOrder] = useState(false);
     let food = donor.inventory;
-    console.log('donor: ', donor);
-    console.log('donor.inventory: ', donor.inventory);
+    // console.log('donor: ', donor);
+    // console.log('donor.inventory: ', donor.inventory);
     const dispatch = useDispatch();
 
     const addOrderHandler = (key, avail) => {
