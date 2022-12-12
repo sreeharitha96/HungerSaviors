@@ -19,7 +19,6 @@ import searchReducer from "./reducers/search-reducer";
 import previousorderReducer from './reducers/previousorder-reducer';
 import PreviousOrders from './profile-component/previous-orders';
 import UserProfilePrivatePage from './profile-component/userprofile-private';
-import DonorProfilePage from './profile-component/donor-profile';
 import userReducer from './users/user-reducer';
 import AdminPage from "./admin";
 import Login from './login-register-component/login-component';
