@@ -5,7 +5,7 @@ import {findDonorsByCitynameThunk}
 
 const initialState = {
     donors: [],
-    loading: false
+    loading3: false
 }
 
 const searchSlice = createSlice({
@@ -14,17 +14,17 @@ const searchSlice = createSlice({
     extraReducers: {
         [findDonorsByCitynameThunk.pending]:
            (state) => {
-              state.loading = true
+              state.loading3 = true
               state.donors = []
         },
         [findDonorsByCitynameThunk.fulfilled]:
            (state, { payload }) => {
-              state.loading = false
+              state.loading3 = false
               state.donors = payload
         },
         [findDonorsByCitynameThunk.rejected]:
            (state) => {
-              state.loading = false
+              state.loading3 = false
         },
      
        }

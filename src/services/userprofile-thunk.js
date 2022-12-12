@@ -11,10 +11,9 @@ export const findUserByUsernameThunk = createAsyncThunk(
     'profile/findUserByUsername',
     async (username) => {
        const user= await service.findUserByUserName(username)
-    console.log(username)
-    console.log(user)
-    console.log(user[0])
-    const customer= user[0]
+    console.log("username in thunk: ", username)
+    console.log("user in thunk: ", user)
+    const customer= user
     console.log(customer)
     return customer
     }

@@ -28,6 +28,7 @@ import Register from './login-register-component/register-component';
 const store = configureStore(
     {reducer: {
             donorsData: donorReducer,
+            users: userReducer,
             userprofile: userprofileReducer, 
             profile: editprofileReducer, 
             donors: searchReducer,
