@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from "react";
 import $ from 'jquery';
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router";
+import {useNavigate, Navigate} from "react-router";
 import { updateUserThunk, findUserByUsernameThunk } from "../services/userprofile-thunk.js";
+import { Link } from 'react-router-dom';
+import ProfilePage from "../profile-component/index.js";
+
 
 function EditUserProfile (){
     $(document).ready(function() {
@@ -25,27 +28,33 @@ function EditUserProfile (){
         });
     });
 
-const username='harisree';
+    // const [userName, setUsername] = useState('admin')
+const [saveSucess, setSaveSuccess] = useState(false)
+const {currentUser}= useSelector((state)=> state.users)
 const {userprofile, loading} = useSelector((state) => state.userprofile);
 const dispatch = useDispatch()
 useEffect(() => {
-  dispatch(findUserByUsernameThunk(username))
+  dispatch(findUserByUsernameThunk(currentUser.userName))
   }, [dispatch])
 
 console.log(userprofile);
 const profile= useSelector(store => store.profile);
-const [profileData, setProfileData] = useState(profile);
+
+const [profileData, setProfileData] = useState(userprofile);
 console.log(profile);
 console.log(profileData);
+console.log(userprofile)
+console.log(currentUser)
 const navigate = useNavigate();
 
 
  const saveClickHandler = () => {
        console.log(profileData, "From comp");
+       
       dispatch(updateUserThunk(profileData));   
-      
+      setSaveSuccess(true)
       navigate("/profile");
-      window.location.reload()
+     
 
  }
     return(
@@ -207,13 +216,15 @@ const navigate = useNavigate();
                       <div className="form-group">
                            <div className="col-xs-12">
                                 <br/>
-                              	<button className="btn btn-lg btn-success" type="submit"  onClick={saveClickHandler}><i className="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button className="btn btn-lg" type="reset"><i className="glyphicon glyphicon-repeat"></i> Reset</button>
+                              	<button className="btn btn-lg btn-success" type="submit"  onClick={saveClickHandler}>Save</button>
+                                   <button className="btn btn-lg" type="reset"><i className="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
+                           
                       </div>
               	</form>
               
               <hr/>
+              
               
              </div>
              {/* <div className="tab-pane" id="messages">

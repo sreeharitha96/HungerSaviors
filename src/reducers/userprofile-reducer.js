@@ -3,7 +3,9 @@ import {findUserByUsernameThunk, updateUserThunk} from '../services/userprofile-
 
 const initialState = {
     userprofile: [],
-    loading: false
+    loading: false,
+    loading2: false
+
 }
 
 
@@ -25,18 +27,22 @@ const profileSlice = createSlice({
          (state) => {
             state.loading = false
       },
+      [updateUserThunk.fulfilled]: (state, {payload}) => {
+        state.loading2 = false
+        state.userprofile = payload
+    }
      
-     [updateUserThunk.fulfilled]:
-     (state, { payload }) => {
-       console.log(payload)
-       state.loading = false
-    //    const profileNdx = state.profile
-    //      .findIndex((t) => t._id === payload._id)
-       state.profile = {
-         ...state.profile,
-         ...payload
-       }
-     }
+    //  [updateUserThunk.fulfilled]:
+    //  (state, { payload }) => {
+    //    console.log(payload)
+    //    state.loading = false
+    // //    const profileNdx = state.profile
+    // //      .findIndex((t) => t._id === payload._id)
+    //    state.profile = {
+    //      ...state.profile,
+    //      ...payload
+    //    }
+    //  }
    
     }
    

@@ -21,7 +21,7 @@ export const findUserByUsernameThunk = createAsyncThunk(
 )
 
 export const updateUserThunk = createAsyncThunk(
-    'profile/updateCustomer',
+    'profile/updateUser',
     async (userprofile) => {
         console.log(userprofile)
          const upuser= await service.updateUser(userprofile) 
