@@ -2,29 +2,29 @@ import React, { useEffect } from 'react';
 import './index.css';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
-import {findUserByUsernameThunk, updateUserThunk} from "../services/userprofile-thunk.js";
+import {findDonorByUsernameThunk, updateDonorThunk} from "../services/donor-thunks";
 
 
-const  UserProfilePage = () => {
+const  DonorProfilePage = () => {
   const navigate = useNavigate()
 
-  const username='harisree';
-  const {userprofile, loading} = useSelector((state) => state.userprofile);
+  const username='Donor1';
+  const {donorsData, loading2} = useSelector((state) => state.donorsData);
   const profile= useSelector((state) => state.profile);
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(findUserByUsernameThunk(username))
+    dispatch(findDonorByUsernameThunk(username))
     }, [])
-  console.log(userprofile);
+  console.log(donorsData);
   
   
  const handleOrders = () =>{
     navigate('/order')
  }
 
-  const handleUpdateUserProfileBtn = () => {
-    navigate('/updateUser')
+  const handleUpdateDonorProfileBtn = () => {
+    navigate('/updateDonor')
 }
 // var myStringArray = userprofile;
 // var user1;
@@ -50,7 +50,7 @@ const  UserProfilePage = () => {
 
 <div class="row">
         {
-                loading &&
+                loading2 &&
                 <li className="list-group-item">
                     Loading...
                 </li>
@@ -58,25 +58,25 @@ const  UserProfilePage = () => {
       <div class="col-xs-12 col-sm-9">      
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4 class="panel-title">User profile</h4>
+          <h4 class="panel-title">Donor profile</h4>
           </div>
           <div class="panel-body">
             <div class="profile__avatar">
               <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..."/>
             </div>
             <div class="profile__header">
-              <h4>{userprofile.firstName} {userprofile.lastName}<small>{userprofile.occupation}</small></h4>
+              <h4>{donorsData.firstName} {donorsData.lastName}<small>{donorsData.occupation}</small></h4>
               <p class="text-muted">
-                {userprofile.about}
+                {donorsData.about}
               </p>
               <p>
-                <a href="#">{userprofile.website}</a>
+                <a href="#">{donorsData.website}</a>
               </p>
             </div>
             <div class="profile__header">
-            &nbsp;&nbsp; <span><i class="bi bi-chat">&nbsp;{userprofile.followers}   </i> &nbsp;Followers</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span><i class="bi bi-repeat">&nbsp;{userprofile.following}  </i>&nbsp; Following </span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span><i class="bi bi-hand-thumbs-up">&nbsp;{userprofile.likes} </i>&nbsp; Likes</span>
+            &nbsp;&nbsp; <span><i class="bi bi-chat">&nbsp;{donorsData.followers}   </i> &nbsp;Followers</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span><i class="bi bi-repeat">&nbsp;{donorsData.following}  </i>&nbsp; Following </span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span><i class="bi bi-hand-thumbs-up">&nbsp;{donorsData.likes} </i>&nbsp; Likes</span>
 
             </div>
           </div>
@@ -91,19 +91,19 @@ const  UserProfilePage = () => {
               <tbody>
                 <tr>
                   <th><strong>Location</strong></th>
-                  <td>{userprofile.location}</td>
+                  <td>{donorsData.location}</td>
                 </tr>
                 <tr>
                   <th><strong>Company name</strong></th>
-                  <td>{userprofile.companyname}</td>
+                  <td>{donorsData.companyname}</td>
                 </tr>
                 <tr>
                   <th><strong>Position</strong></th>
-                  <td>{userprofile.position}</td>
+                  <td>{donorsData.position}</td>
                 </tr>
                 <tr>
                   <th><strong>Date of Birth</strong></th>
-                  <td>{userprofile.dateofbirth}</td>
+                  <td>{donorsData.dateofbirth}</td>
                 </tr>
               </tbody>
             </table>
@@ -123,7 +123,7 @@ const  UserProfilePage = () => {
                 </tr>
                 <tr>
                   <th><strong>Member since</strong></th>
-                  <td>{userprofile.dateofjoining}</td>
+                  <td>{donorsData.dateofjoining}</td>
                 </tr>
                 <tr>
                 <button
@@ -132,11 +132,11 @@ const  UserProfilePage = () => {
                 Previous Food Orders
             </button>
                   <th><strong><a href="/order">Previous Food Orders</a></strong></th>
-                  <td>{userprofile.previousorders}</td> 
+                  <td>{donorsData.previousorders}</td> 
                 </tr>
                 <tr>
                   <th><strong><a href="#">Favorites</a></strong></th>
-                  <td>{userprofile.favorites}</td> 
+                  <td>{donorsData.favorites}</td> 
                 </tr>
               </tbody>
             </table>
@@ -219,11 +219,11 @@ const  UserProfilePage = () => {
 
           <button
                 className="profile__contact-btn btn btn-lg btn-block btn-warning" data-toggle="modal" data-target="#profile__contact-form"
-                onClick={() => dispatch(updateUserThunk({
-                  ...userprofile,
-                  likes: userprofile.likes + 1
+                onClick={() => dispatch(updateDonorThunk({
+                  ...donorsData,
+                  likes: donorsData.likes + 1
                 }))}>
-                Like : {userprofile.likes}
+                Like : {donorsData.likes}
             </button>
 
 
@@ -238,7 +238,7 @@ const  UserProfilePage = () => {
 
           <button
                 className="profile__contact-btn btn btn-lg btn-block btn-warning" data-toggle="modal" data-target="#profile__contact-form"
-                onClick={handleUpdateUserProfileBtn}>
+                onClick={handleUpdateDonorProfileBtn}>
                 Edit Profile
             </button>
         </p>
@@ -291,4 +291,4 @@ const  UserProfilePage = () => {
  )
 }
 
-export default UserProfilePage;
+export default DonorProfilePage;

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import $ from 'jquery';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
-import { updateUserThunk, findUserByIdThunk } from "../services/userprofile-thunk.js";
+import { updateUserThunk, findUserByUsernameThunk } from "../services/userprofile-thunk.js";
 
 function EditUserProfile (){
     $(document).ready(function() {
@@ -26,11 +26,11 @@ function EditUserProfile (){
         });
     });
 
-
+const username='harisree';
 const {userprofile, loading} = useSelector((state) => state.userprofile);
 const dispatch = useDispatch()
 useEffect(() => {
-  dispatch(findUserByIdThunk())
+  dispatch(findUserByUsernameThunk(username))
   }, [])
 console.log(userprofile);
 const profile= useSelector(store => store.profile);

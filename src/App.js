@@ -17,10 +17,15 @@ import SearchResults from './search/searchresults';
 import userprofileReducer from "./reducers/userprofile-reducer";
 import editprofileReducer from "./reducers/editprofile-reducer";
 import searchReducer from "./reducers/search-reducer";
+import previousorderReducer from './reducers/previousorder-reducer';
+import PreviousOrders from './profile-component/previous-orders';
+import UserProfilePrivatePage from './profile-component/userprofile-private';
+import DonorProfilePage from './profile-component/donor-profile';
 
 const store = configureStore(
     {reducer: {
-            donorsData: donorReducer,userprofile: userprofileReducer, profile: editprofileReducer, donors: searchReducer}});
+            donorsData: donorReducer,userprofile: userprofileReducer, profile: editprofileReducer, donors: searchReducer,
+           orders: previousorderReducer}});
 
 function App() {
   return (
@@ -32,11 +37,15 @@ function App() {
                       <Route path="/" element={<HomePage/>}/>
                       <Route path="/login" element={<LoginRegister/>}/>
                       <Route path="/profile/*" element={<ProfilePage/>}/>
+                      <Route path="/donorprofile" element={<DonorProfilePage/>}/>
                       <Route path="/home" element={<DonorList/>}/>
                       <Route path="/updateUser" element={<EditUserProfile/>}/>
+                      <Route path="/updateDonor" element={<EditUserProfile/>}/>
                       <Route path="/search" element={<Search/>}/>
                       <Route path="/searchresults" element={<SearchResults/>}/>
                       <Route path="/donor/*" element={<DonorDetails/>}/>
+                      <Route path="/order/*" element={<PreviousOrders/>}/>
+                      <Route path= "/privateuser" element={<UserProfilePrivatePage/>}/>
                   </Routes>
               </div>
           </BrowserRouter>

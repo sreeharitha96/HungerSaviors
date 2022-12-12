@@ -5,7 +5,7 @@ import {useNavigate} from "react-router";
 import {findUserByUsernameThunk, updateUserThunk} from "../services/userprofile-thunk.js";
 
 
-const  UserProfilePage = () => {
+const  UserProfilePrivatePage = () => {
   const navigate = useNavigate()
 
   const username='harisree';
@@ -110,7 +110,7 @@ const  UserProfilePage = () => {
           </div>
         </div>
 
-        <div class="panel panel-default">
+        {/* <div class="panel panel-default">
           <div class="panel-heading">
           <h4 class="panel-title">Orders History</h4>
           </div>
@@ -141,7 +141,7 @@ const  UserProfilePage = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </div> */}
 
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -213,12 +213,10 @@ const  UserProfilePage = () => {
           <a href="#" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
             Follow
           </a>
-          <a href="#" class="profile__contact-btn btn btn-lg btn-block btn-danger" data-toggle="modal" data-target="#profile__contact-form">
-            Like
-          </a>
+       
 
           <button
-                className="profile__contact-btn btn btn-lg btn-block btn-warning" data-toggle="modal" data-target="#profile__contact-form"
+                className="profile__contact-btn btn btn-lg btn-block btn-danger" data-toggle="modal" data-target="#profile__contact-form"
                 onClick={() => dispatch(updateUserThunk({
                   ...userprofile,
                   likes: userprofile.likes + 1
@@ -236,11 +234,11 @@ const  UserProfilePage = () => {
    </span> */}
 
 
-          <button
+          {/* <button
                 className="profile__contact-btn btn btn-lg btn-block btn-warning" data-toggle="modal" data-target="#profile__contact-form"
                 onClick={handleUpdateUserProfileBtn}>
                 Edit Profile
-            </button>
+            </button> */}
         </p>
 
         <hr class="profile__contact-hr"/>
@@ -291,4 +289,4 @@ const  UserProfilePage = () => {
  )
 }
 
-export default UserProfilePage;
+export default UserProfilePrivatePage;
