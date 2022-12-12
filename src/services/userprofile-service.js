@@ -20,6 +20,8 @@ export const findUserByUserName = async (username) => {
 
 export const updateUser = async (userprofile) => {
     const response = await axios
-      .put(`${EDIT_USER_API_URL}`, userprofile);
+      .put(`${USER_API_URL}/${userprofile.username}`, userprofile);
+      console.log("user profile in service: ", userprofile)
+    console.log("response in service: ", response)
     return userprofile;
 }
