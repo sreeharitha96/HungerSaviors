@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import InventoryItemDonor from "../inventory/inventory-donor-view";
 import InventoryAddItem from "../inventory/inventory-add-item";
-import CustomerViewOfDonor from "./customer-view";
 
 const DonorViewOfDonor = (
     {
@@ -44,10 +43,10 @@ const DonorViewOfDonor = (
                 <div className="container ps-5 pe-5">
                     <div className="image-container">
                         <div className="main_image">
-                            <img className="w-100 mt-2 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+                            <img className="w-100 mt-2 rounded-2" src={`/images/${donor.coverPhoto}`} alt="landing background"/>
                         </div>
                         <div className="overlay_image">
-                            <img className="w-100 rounded-pill float-start" src={`/images/${donor.dp}`} alt="profile"/>
+                            <img className="w-100 rounded-pill float-start" src={`/images/${donor.profilePhoto}`} alt="profile"/>
                         </div>
                     </div>
 
@@ -72,7 +71,7 @@ const DonorViewOfDonor = (
                         <div className="row">
                             {
                                 !edit &&
-                                <InventoryItemDonor key={donor._id} food={donor.foodavailable}/>
+                                <InventoryItemDonor key={donor._id} food={donor.inventory}/>
                             }
                             {
                                 edit &&

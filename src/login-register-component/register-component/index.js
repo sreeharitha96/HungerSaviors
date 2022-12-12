@@ -116,30 +116,48 @@
 // export default Register;
 
 import React from 'react';
-import {Tabs, Tab} from 'react-bootstrap';
 import RegisterCustomer from './register-customer.js';
 import RegisterDonor from './register-donor.js/index.js';
+import { useState } from 'react';
+import {
+  MDBTabs,
+  MDBTabsItem,
+  MDBTabsLink,
+  MDBTabsContent,
+  MDBTabsPane
+} from 'mdb-react-ui-kit';
 
 function Register() {
-  const container1 = {
-    height: '100%',
-    width: '50%',
-    alignItems: 'center',
+  const [basicActive, setBasicActive] = useState('tab1');
+
+  const handleBasicClick = (value) => {
+    if (value === basicActive) {
+      return;
+    }
+
+    setBasicActive(value);
   };
   
   return (
-    <div className="container" style={container1} fluid="true">
-      <div className="row"style={{ height: '100%' }}>
-        <Tabs justify variant="pills" defaultActiveKey="tab-1">
-            <Tab eventKey="tab-1" title="Customer">
-                <RegisterCustomer/>
-            </Tab>
-            <Tab eventKey="tab-2" title="Donor">
-                <RegisterDonor/>
-            </Tab>
-        </Tabs>
-      </div>
-    </div>
+    <>
+      <MDBTabs className='mb-3'>
+        <MDBTabsItem>
+          <MDBTabsLink onClick={() => handleBasicClick('tab1')} active={basicActive === 'tab1'}>
+            Customer
+          </MDBTabsLink>
+        </MDBTabsItem>
+        <MDBTabsItem>
+          <MDBTabsLink onClick={() => handleBasicClick('tab2')} active={basicActive === 'tab2'}>
+            Donor
+          </MDBTabsLink>
+        </MDBTabsItem>
+      </MDBTabs>
+
+      <MDBTabsContent>
+        <MDBTabsPane show={basicActive === 'tab1'}><RegisterCustomer/></MDBTabsPane>
+        <MDBTabsPane show={basicActive === 'tab2'}><RegisterDonor/></MDBTabsPane>
+      </MDBTabsContent>
+    </>
   );
 }
 

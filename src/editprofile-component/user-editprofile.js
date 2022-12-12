@@ -7,7 +7,6 @@ import { updateUserThunk, findUserByIdThunk } from "../services/userprofile-thun
 function EditUserProfile (){
     $(document).ready(function() {
 
-    
         var readURL = function(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -27,11 +26,11 @@ function EditUserProfile (){
     });
 
 
-const {userprofile, loading} = useSelector((state) => state.userprofile);
+const {userprofile} = useSelector((state) => state.userprofile);
 const dispatch = useDispatch()
 useEffect(() => {
   dispatch(findUserByIdThunk())
-  }, [])
+  }, [dispatch])
 console.log(userprofile);
 const profile= useSelector(store => store.profile);
 const [profileData, setProfileData] = useState(profile);

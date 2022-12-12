@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from "react";
+import React, {useState} from "react";
 import {Button} from "react-bootstrap";
 import OrderItem from "../inventory/order-item";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,7 +10,9 @@ const CustomerViewOfDonor = ({donor}) => {
     const [cart, setCart] = useState({})
 
     const [order, setOrder] = useState(false);
-    let food = donor.foodavailable;
+    let food = donor.inventory;
+    console.log('donor: ', donor);
+    console.log('donor.inventory: ', donor.inventory);
     const dispatch = useDispatch();
 
     const addOrderHandler = (key, avail) => {
