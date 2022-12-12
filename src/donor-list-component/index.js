@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import NavBar from "../navbar-component";
 import DonorItem from "./donor-item";
 import {useDispatch, useSelector} from "react-redux";
 import {findDonorThunk} from "../services/donor-thunks";
@@ -10,7 +9,7 @@ const DonorList = ({status}) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(findDonorThunk(status))
-    },[dispatch])
+    }, [dispatch])
     return (
         <>
             <h2>

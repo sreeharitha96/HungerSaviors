@@ -14,7 +14,7 @@ const  UserProfilePage = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(findUserByIdThunk())
-    }, [])
+    }, [dispatch])
   console.log(userprofile);
 
 
