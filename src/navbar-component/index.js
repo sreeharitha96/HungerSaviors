@@ -39,6 +39,8 @@ function NavBar() {
                 </div>
                 <div className="col-4 align-self-center float-end">
                     <Link to="/login"><button className="float-end me-3">Login/Register</button></Link>
+                    <Link to="/profile"><button className="float-end me-3">Profile</button></Link>
+
                 </div>
 
             </div>

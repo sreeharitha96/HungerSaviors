@@ -32,7 +32,6 @@ const DonorItem = (
     }
 ) => {
     
-    console.log('state.users.currentUser: ', (useSelector((state) => !state.users.currentUser)));
     const linkTo = (useSelector((state) => !state.users.currentUser)) ? "/login" : `/donor/${donor.userName}`
     console.log(linkTo)
     return(

@@ -8,19 +8,17 @@ import {findUserByUsernameThunk, updateUserThunk} from "../services/userprofile-
 const  UserProfilePage = () => {
   const navigate = useNavigate()
 
-  const username='harisree';
+  const {currentUser}= useSelector((state)=> state.users)
   const {userprofile, loading} = useSelector((state) => state.userprofile);
   const profile= useSelector((state) => state.profile);
 
   const dispatch = useDispatch()
   useEffect(() => {
-<<<<<<< HEAD
-    dispatch(findUserByUsernameThunk(username))
-    }, [])
-=======
-    dispatch(findUserByIdThunk())
+
+    dispatch(findUserByUsernameThunk(currentUser.userName))
+    console.log(currentUser.userName)
     }, [dispatch])
->>>>>>> 6e86d1f0ceea50eba9146401c0592f3fffb9328a
+
   console.log(userprofile);
   
   
@@ -49,7 +47,6 @@ const  UserProfilePage = () => {
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<<<<<<< HEAD
 <div class="container">
 
            
@@ -65,14 +62,6 @@ const  UserProfilePage = () => {
         <div class="panel panel-default">
           <div class="panel-heading">
           <h4 class="panel-title">User profile</h4>
-=======
-<div className="container">
-<div className="row">
-      <div className="col-xs-12 col-sm-9">      
-        <div className="panel panel-default">
-          <div className="panel-heading">
-          <h4 className="panel-title">User profile</h4>
->>>>>>> 6e86d1f0ceea50eba9146401c0592f3fffb9328a
           </div>
           <div className="panel-body">
             <div className="profile__avatar">
