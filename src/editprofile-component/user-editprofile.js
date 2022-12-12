@@ -37,19 +37,19 @@ useEffect(() => {
   dispatch(findUserByUsernameThunk(currentUser.userName))
   }, [dispatch])
 
-console.log(userprofile);
+// console.log(userprofile);
 const profile= useSelector(store => store.profile);
 
 const [profileData, setProfileData] = useState(userprofile);
-console.log(profile);
-console.log(profileData);
-console.log(userprofile)
-console.log(currentUser)
+// console.log(profile);
+// console.log(profileData);
+// console.log(userprofile)
+// console.log(currentUser)
 const navigate = useNavigate();
 
 
  const saveClickHandler = () => {
-       console.log(profileData, "From comp");
+    //    console.log(profileData, "From comp");
        
       dispatch(updateUserThunk(profileData));   
       setSaveSuccess(true)
