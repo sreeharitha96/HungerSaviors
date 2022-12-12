@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {findUserByIdThunk, updateUserThunk} from '../services/userprofile-thunk.js';
+import {findUserByUsernameThunk, updateUserThunk} from '../services/userprofile-thunk.js';
 
 const initialState = {
     userprofile: [],
@@ -11,17 +11,17 @@ const profileSlice = createSlice({
     name: 'userprofile',
     initialState,
     extraReducers: {
-      [findUserByIdThunk.pending]:
+      [findUserByUsernameThunk.pending]:
          (state) => {
             state.loading = true
             state.userprofile = []
       },
-      [findUserByIdThunk.fulfilled]:
-         (state, { payload }) => {
+      [findUserByUsernameThunk.fulfilled]:
+         (state, {payload} ) => {
             state.loading = false
             state.userprofile = payload
       },
-      [findUserByIdThunk.rejected]:
+      [findUserByUsernameThunk.rejected]:
          (state) => {
             state.loading = false
       },

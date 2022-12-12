@@ -39,7 +39,10 @@ const donorSlice = createSlice({
         //     state.donor = action.payload
         // },
         [findDonorByUsernameThunk.fulfilled]: (state, {payload}) => {
+<<<<<<< HEAD
+=======
             console.log('payload: ', payload);
+>>>>>>> 6e86d1f0ceea50eba9146401c0592f3fffb9328a
             state.loading2 = false
             state.donor = payload
         },

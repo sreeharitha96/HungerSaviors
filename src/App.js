@@ -16,6 +16,10 @@ import SearchResults from './search/searchresults';
 import userprofileReducer from "./reducers/userprofile-reducer";
 import editprofileReducer from "./reducers/editprofile-reducer";
 import searchReducer from "./reducers/search-reducer";
+import previousorderReducer from './reducers/previousorder-reducer';
+import PreviousOrders from './profile-component/previous-orders';
+import UserProfilePrivatePage from './profile-component/userprofile-private';
+import DonorProfilePage from './profile-component/donor-profile';
 import userReducer from './users/user-reducer';
 import AdminPage from "./admin";
 import Login from './login-register-component/login-component';
@@ -24,11 +28,12 @@ import Register from './login-register-component/register-component';
 const store = configureStore(
     {reducer: {
             donorsData: donorReducer,
-            users: userReducer,
-            userprofile: userprofileReducer,
-            profile: editprofileReducer,
-            donors: searchReducer
+            userprofile: userprofileReducer, 
+            profile: editprofileReducer, 
+            donors: searchReducer,
+           orders: previousorderReducer
         }});
+
 
 function App() {
     // const {users} = useSelector((state) => state.users)
@@ -51,6 +56,8 @@ function App() {
                             <Route path="/searchresults" element={<SearchResults/>}/>
                             <Route path="/donor/*" element={<DonorDetails/>}/>
                             <Route path="/admin" element={<AdminPage/>}/>
+                            <Route path="/order/*" element={<PreviousOrders/>}/>
+                            <Route path= "/privateuser" element={<UserProfilePrivatePage/>}/>
                       </Fragment>
                         }
                   </Routes>
