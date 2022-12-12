@@ -37,48 +37,50 @@ const DonorViewOfDonor = (
         setEdit(!edit);
     }
 
+
     return(
-        <div className="container ps-5 pe-5">
-            <div className="image-container">
-                <div className="main_image">
-                    <img className="w-100 mt-2 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
-                </div>
-                <div className="overlay_image">
-                    <img className="w-100 rounded-pill float-start" src={`/images/${donor.dp}`} alt="profile"/>
-                </div>
-            </div>
 
-            <div className="row d-block text-start">
-                <h5>Inventory Available</h5>
-                {
-                    !edit &&
-                    <button onClick={editHandler}
-                        className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
-                        edit
-                    </button>
-                }
-                {
-                    edit &&
-                    <button onClick={editHandler}
-                        className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
-                        save
-                    </button>
-                }
-            </div>
-            <div className="text-start">
-                <div className="row">
-                    {
-                        !edit &&
-                        <InventoryItemDonor key={donor._id} food={donor.foodavailable}/>
-                    }
-                    {
-                        edit &&
-                        <InventoryAddItem key={donor._id} donor={donor}/>
-                    }
-                </div>
-            </div>
+                <div className="container ps-5 pe-5">
+                    <div className="image-container">
+                        <div className="main_image">
+                            <img className="w-100 mt-2 rounded-2" src={`/images/${donor.coverPhoto}`} alt="landing background"/>
+                        </div>
+                        <div className="overlay_image">
+                            <img className="w-100 rounded-pill float-start" src={`/images/${donor.profilePhoto}`} alt="profile"/>
+                        </div>
+                    </div>
 
-        </div>
+                    <div className="row d-block text-start">
+                        <h5>Inventory Available</h5>
+                        {
+                            !edit &&
+                            <button onClick={editHandler}
+                                    className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
+                                edit
+                            </button>
+                        }
+                        {
+                            edit &&
+                            <button onClick={editHandler}
+                                    className="mt-2 btn rounded-pill float-end border-secondary border-thin fw-bold me-3">
+                                save
+                            </button>
+                        }
+                    </div>
+                    <div className="text-start">
+                        <div className="row">
+                            {
+                                !edit &&
+                                <InventoryItemDonor key={donor._id} food={donor.inventory}/>
+                            }
+                            {
+                                edit &&
+                                <InventoryAddItem key={donor._id} donor={donor}/>
+                            }
+                        </div>
+                    </div>
+
+                </div>
     )
 }
 export default DonorViewOfDonor;

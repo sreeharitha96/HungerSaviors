@@ -1,15 +1,45 @@
 import React from "react";
+import {useSelector} from "react-redux";
 
 const InventoryItem = (
     {
-        food = {
-            apple: 2,
-            pasta: 10
+        donor = {
+            _id: "123",
+            userName: "rest1",
+            name: "restaurant1",
+            location: "boston",
+            image: "changing-lifes.jpg",
+            dp: "logo.png",
+            about : "about the donor1",
+            followers: 123,
+            following: 234,
+            liked: true,
+            likes: 14,
+            rating: 4.2,
+            foodavailable: {
+                "apple pie": 2,
+                "pasta": 10
+            },
+            foodavailabilityposts: "array",
+            storetimings:"10:00am to 9:00pm",
+            rewardpoints: 987,
+            foodreviews: {
+                "review1": "best place!",
+                "review2": "decent place to find food"
+            }
         }
+        // food = {
+        //     apple: 2,
+        //     pasta: 10
+        // }
     }
 ) => {
     // console.log(typeof(food))
     // console.log(food);
+    // console.log(donor)
+    // console.log(donor.foodavailable)
+    // let food = donor.foodavailable;
+    console.log(donor);
     return(
 
         Object.keys(food).map((key, i) => (

@@ -1,11 +1,9 @@
 import "./index.css";
-import NavBar from "../navbar-component/index.js";
 import LandingDonate from "./LandingDonate.js";
 import LandingFind from "./LandingFind.js";
 import React from 'react';
 import {Link} from "react-router-dom";
 import DonorList from "../donor-list-component";
-// import { FontAwesomeIcon } from '@fortawesome/fontawesome-free';
 
 function HomePage() {
     return (
@@ -20,7 +18,6 @@ function HomePage() {
 
             <div className="row p-0 m-0">
                 <div className="p-5">
-                    {/*<FontAwesomeIcon icon="fa-solid fa-handshake-simple" />*/}
                     icon for holding hands<br/>
                     Join Us to start making a difference! <Link to="/login">login/register</Link>
                 </div>
@@ -35,7 +32,7 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <DonorList/>
+            <DonorList status={"Approved"}/>
         </>
 
     )
