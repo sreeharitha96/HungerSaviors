@@ -70,6 +70,7 @@ const CustomerViewOfDonor = ({donor}) => {
                 <div className="text-start">
                     <div className="row">
                     {
+                        console.log(food) &&
                         Object.keys(food).map((key, i) => (
                           <div key={i} className="p-1 col-12 col-lg-6">
                               <div className="card text-start p-1 pt-0">

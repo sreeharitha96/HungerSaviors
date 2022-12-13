@@ -22,15 +22,16 @@ const DonorDetails = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[dispatch])
 
+    console.log(donor)
     return(
         <>
             {loading2 ? (
                 <li className="list-group-item">
                     Loading...
                 </li>
-            ) : customer ? (
-                <CustomerViewOfDonor key={donor._id} donor={donor}/>
-            ): <DonorViewOfDonor key={donor._id} donor={donor}/>
+            ) : !customer ? (
+                <DonorViewOfDonor key={donor._id} donor={donor}/>
+            ): <CustomerViewOfDonor key={donor._id} donor={donor}/>
             }
         </>
     );
