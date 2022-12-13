@@ -1,13 +1,22 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { registerThunk } from '../../../users/user-thunks';
-import { Button } from 'react-bootstrap';
-
-// import Maps from '../../../map-component'
+import { Link } from 'react-router-dom';
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+  MDBInput
+}
+from 'mdb-react-ui-kit';
 
 function RegisterCustomer() {
 
-    const [locationButton, setLocationButton] = useState(false)
     const [userName, setUserName] = useState('admin')
     const [email, setEmail] = useState('admin@admin.com')
     const [firstName, setFirstName] = useState('First')
@@ -19,7 +28,6 @@ function RegisterCustomer() {
     const [error, setError] = useState(null)
     const role = "CUSTOMER"
     const [dateOfBirth, setDateOfBirth] = useState(null)
-    const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
     const handleRegisterBtn = () => {
         if (password !== validatePassword) {
@@ -31,113 +39,51 @@ function RegisterCustomer() {
         dispatch(registerThunk(newUser))
     }
 
-  const container1 = {
-    height: '100%',
-  };
-  const firstHalf = {
-    backgroundColor: '#F5F3F0',
-    height: '100%',
-  };
-  const secondHalf = {
-    backgroundColor: '#2A4E49',
-    height: '100%',
-    display: 'flex',
-  };
-
-  const centerDiv = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
-
-  const headerStyle = {
-    color: '#ffffff',
-  };
-
-  const forms = {
-    marginTop: '30px',
-    backgroundColor: '#2A4E49',
-    color: '#ffffff',
-    outline: 'none',
-  };
-
-  const submitButton = {
-    marginTop: '10px',
-    backgroundColor: '#EA7035',
-    border: 'none',
-    padding: '10px 40px',
-  };
-
   return (
-    <div className="container" style={container1} fluid="true">
-      <div className="row"style={{ height: '100%' }}>
-        <div className="col"style={firstHalf}></div>
-        <div className="col"style={secondHalf}>
-          <div className="container" style={centerDiv}>
-            <div className="row">
-              <h1 style={headerStyle}>Register</h1>
-              {/* <p style={headerStyle}> I'm a professional</p> */}
-              <div className="container">
-                {
-                  error &&
-                  <div className="alert alert-danger">
-                      {error}
-                  </div>
-                }
-                <form>
-                    <div className='form-group' style={forms}>
-                        <label htmlFor="register-name">First Name</label>
-                        <input type="text" className="forms" placeholder="Enter first name" id="register-name" onChange={(e) => setFirstName(e.target.value)}/> 
-                    </div>
-                    <div className='form-group' style={forms}>
-                        <label htmlFor="register-name">Last Name</label>
-                        <input type="text" className="forms" placeholder="Enter last name" id="register-name" onChange={(e) => setLastName(e.target.value)}/> 
-                    </div>
-                    <div className='form-group' style={forms}>
-                        <label htmlFor="register-name">Username</label>
-                        <input type="text" className="forms" placeholder="Enter user name" id="register-name" onChange={(e) => setUserName(e.target.value)}/> 
-                    </div>
-                    <div className='form-group' style={forms}>
-                        <label htmlFor="register-email">Email address</label>
-                        <input type="email" className="forms" placeholder="Enter email" id="register-email" onChange={(e) => setEmail(e.target.value)}/> 
-                    </div>
-                    <div className="form-group" style={forms}>
-                        <label htmlFor="register-password">Password</label>
-                        <input type="password" className="forms" placeholder="Password" id="register-password" onChange={(e) => setPassword(e.target.value)}/>
-                    </div>
-                    <div className="form-group" style={forms}>
-                        <label htmlFor="register-password-re-enter">Re-enter Password</label>
-                        <input type="password" className="forms" placeholder="Password" id="register-password-re-enter" onChange={(e) => setValidatePassword(e.target.value)}/>
-                    </div>
-                    <div className="form-group" style={forms}>
-                        <label htmlFor="register-location">Enter location</label>
-                        <input type="text" className="forms" placeholder="location" id="register-location" onChange={(e) => setLocation(e.target.value)}/>
-                        {/* <div> */}
-                            {/* <Button style={submitButton} onClick={(e) => setLocationButton(true)}>Set location</Button> */}
-                            {/* { locationButton && <Maps/> } */}
-                        {/* </div> */}
-                    </div>
-                    <div className="form-group" style={forms}>
-                        <label htmlFor="register-dob">Enter date of birth</label>
-                        <input type="date" className="forms" id="register-dob" onChange={(e) => setDateOfBirth(e.target.value)}/>
-                    </div>
-                    <div className='form-group' style={forms}>
-                        <label htmlFor='register-phone'>Enter phone</label>
-                        <input type='text' className='forms' id='register-phone' onChange={(e) => setPhone(e.target.value)}/>
-                    </div>
-                    <Button style={submitButton} onClick={handleRegisterBtn}>Register</Button>
-                </form>
+    <MDBContainer className="my-5">
 
-                {
-                  currentUser &&
-                  <h2>Welcome {currentUser.userName}</h2>
-                }
+      <MDBCard>
+        <MDBRow className='g-0'>
+
+          <MDBCol md='6'>
+            <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp' alt="login form" className='rounded-start w-100'/>
+          </MDBCol>
+
+          <MDBCol md='6'>
+            <MDBCardBody className='d-flex flex-column'>
+
+            {
+              error &&
+              <div className="alert alert-danger">
+                  {error}
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            }
+              <div className='d-flex flex-row mt-2'>
+                <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/>
+                <span className="h1 fw-bold mb-0">Hunger Saviors</span>
+              </div>
+
+              <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Sign up as customer</h5>
+
+                <MDBInput wrapperClass='mb-4' label='First name' id='formControlLg' type='text' size="lg" onChange={(e) => setFirstName(e.target.value)}/>
+                <MDBInput wrapperClass='mb-4' label='Last name' id='formControlLg' type='text' size="lg" onChange={(e) => setLastName(e.target.value)}/>
+                <MDBInput wrapperClass='mb-4' label='Username' id='formControlLg' type='text' size="lg" onChange={(e) => setUserName(e.target.value)}/>
+                <MDBInput wrapperClass='mb-4' label='Email' id='formControlLg' type='email' size="lg" onChange={(e) => setEmail(e.target.value)}/>
+                <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg" onChange={(e) => setPassword(e.target.value)}/>
+                <MDBInput wrapperClass='mb-4' label='Confirm password' id='formControlLg' type='password' size="lg" onChange={(e) => setValidatePassword(e.target.value)}/>
+                <MDBInput wrapperClass='mb-4' label='Address' id='formControlLg' type='text' size="lg" onChange={(e) => setLocation(e.target.value)}/>
+                <MDBInput wrapperClass='mb-4' label='Date of birth' id='formControlLg' type='date' size="lg" onChange={(e) => setDateOfBirth(e.target.value)}/>
+                <MDBInput wrapperClass='mb-4' label='Phone' id='formControlLg' type='text' size="lg" onChange={(e) => setPhone(e.target.value)}/>
+
+              <MDBBtn className="mb-4 px-5" color='dark' size='lg' onClick={() => handleRegisterBtn()}><Link to="/login">Register as customer</Link></MDBBtn>
+              <a className="small text-muted" href="#!">Forgot password?</a>
+              <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Already have an account? <Link to="/login" style={{color: '#393f81'}}>Login here</Link></p>
+
+            </MDBCardBody>
+          </MDBCol>
+        </MDBRow>
+      </MDBCard>
+    </MDBContainer>
   );
 }
 

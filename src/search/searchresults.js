@@ -4,23 +4,36 @@ import {Link} from "react-router-dom";
 import DonorItem from '../donor-list-component/donor-item';
 
 const SearchResults= () =>  {
-    const donors= useSelector((state) => state.donors);
-    const [flag, setFlag]= useState(false)
-    useEffect(() => {
-        if  (donors && donors.length > 0)
-         setFlag(true)
-          console.log(donors)
-        }, [donors])
-    
+    const {donors, loading3} = useSelector((state) => state.donors);
+    // useEffect(() => {
+    //     if  (donors && donors.length > 0)
+    //      setFlag(true)
+    //       console.log(donors)
+    //     }, [donors])
+    console.log(donors)
     return (
-       flag &&
-        <ul className="list-group">
-        {
-          donors.map(donor =>
-            <DonorItem
-              key={donor._id} donor={donor}/> )
-        }
-      </ul>
+        <>
+        <div className='container'>
+            <div className='row'>
+            {
+                loading3 &&
+                <li className="list-group-item">
+                    Loading...
+                </li>
+            }
+            {
+                !loading3 &&
+                donors.map(donor => <div key={donor._id} className='col-12 col-md-6 col-xl-4'><DonorItem key={donor._id} donor={donor}/></div> )
+            }
+            </div>
+        </div>
+        
+     
+       
+ 
+        
+        </>
+        
     )
 }
 

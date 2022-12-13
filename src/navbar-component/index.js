@@ -30,15 +30,17 @@ function NavBar() {
                                 </li>
                             </ul>
 
-                            {/* <form className="form-inline my-2 my-md-0"> */}
-                            {/* <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/> */}
-                            {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
+                            {/* <form class="form-inline my-2 my-md-0"> */}
+                            {/* <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/> */}
+                            {/* <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
                             {/* </form> */}
                         </div>
                     </nav>
                 </div>
                 <div className="col-4 align-self-center float-end">
                     <Link to="/login"><button className="float-end me-3">Login/Register</button></Link>
+                    <Link to="/profile"><button className="float-end me-3">Profile</button></Link>
+
                 </div>
 
             </div>

@@ -7,12 +7,25 @@ export const findUserByIdThunk = createAsyncThunk(
     async () => await service.findUserById()
 )
 
+export const findUserByUsernameThunk = createAsyncThunk(
+    'profile/findUserByUsername',
+    async (username) => {
+       const user= await service.findUserByUserName(username)
+    // console.log("username in thunk: ", username)
+    // console.log("user in thunk: ", user)
+    const customer= user
+    console.log(customer)
+    return customer
+    }
+
+)
+
 export const updateUserThunk = createAsyncThunk(
-    'profile/updateCustomer',
+    'profile/updateUser',
     async (userprofile) => {
-        console.log(userprofile)
+        // console.log(userprofile)
          const upuser= await service.updateUser(userprofile) 
-         console.log("upuser in thunk: " + JSON.stringify(upuser))
+        //  console.log("upuser in thunk: " + JSON.stringify(upuser))
          return upuser
 
     }  

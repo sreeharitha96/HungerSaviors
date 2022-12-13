@@ -31,7 +31,7 @@ const InventoryItemEdit = (
         }
     }
 ) => {
-    let food = donor.foodavailable;
+    let food = donor.inventory;
     const dispatch = useDispatch();
 
     const [val, setVal] = useState('');
@@ -41,18 +41,18 @@ const InventoryItemEdit = (
 
     const deleteInventoryHandler = (key) => {
 
-        const foodList = Object.keys(donor.foodavailable)
+        const foodList = Object.keys(donor.inventory)
         const remainingFood = foodList.filter(words => words !== key)
-        const newfood = Object.keys(donor.foodavailable)
+        const newfood = Object.keys(donor.inventory)
             .filter(key => remainingFood.includes(key))
             .reduce((obj, key) => {
-                obj[key] = donor.foodavailable[key];
+                obj[key] = donor.inventory[key];
                 return obj;
             }, {});
 
         let newDonor = {
             ...donor,
-            foodavailable: newfood
+            inventory: newfood
         }
         dispatch(updateDonorThunk(newDonor));
     }
@@ -60,12 +60,12 @@ const InventoryItemEdit = (
     const updateInventoryHandler = (key) => {
         if(val !== '') {
             let newInv = {
-                ...donor.foodavailable,
+                ...donor.inventory,
                 [key] : parseInt(val)
             }
             let newDonor = {
                 ...donor,
-                foodavailable: newInv
+                inventory: newInv
             }
             // console.log(typeof(newDonor._id))
             dispatch(updateDonorThunk(newDonor));

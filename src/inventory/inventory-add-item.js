@@ -45,12 +45,12 @@ const InventoryAddItem = (
     const updateInventoryHandler = () => {
         if(itemName !== '') {
             let newInv = {
-                ...donor.foodavailable,
+                ...donor.inventory,
                 [itemName] : parseInt(quant)
             }
             let newDonor = {
                 ...donor,
-                foodavailable: newInv
+                inventory: newInv
             }
             // console.log(typeof(newDonor._id))
             dispatch(updateDonorThunk(newDonor));

@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const DonorItem = (
     {
@@ -30,9 +31,11 @@ const DonorItem = (
         }
     }
 ) => {
-    // console.log(donor._id)
+    
+    const linkTo = (useSelector((state) => !state.users.currentUser)) ? "/login" : `/donor/${donor.userName}`
+    console.log(linkTo)
     return(
-        <Link to={`/donor/${donor.userName}`} className="text-decoration-none">
+        <Link to={linkTo} className="text-decoration-none">
             <div className="pb-3">
                 <div className="card text-start">
                     <img src={`/images/${donor.image}`} className="card-img-top" height="200px" alt="..."/>

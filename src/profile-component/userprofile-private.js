@@ -5,20 +5,17 @@ import {useNavigate} from "react-router";
 import {findUserByUsernameThunk, updateUserThunk} from "../services/userprofile-thunk.js";
 
 
-const  UserProfilePage = () => {
+const  UserProfilePrivatePage = () => {
   const navigate = useNavigate()
 
-  const {currentUser}= useSelector((state)=> state.users)
+  const username='harisree';
   const {userprofile, loading} = useSelector((state) => state.userprofile);
   const profile= useSelector((state) => state.profile);
 
   const dispatch = useDispatch()
   useEffect(() => {
-
-    dispatch(findUserByUsernameThunk(currentUser.userName))
-    console.log(currentUser.userName)
-    }, [dispatch])
-
+    dispatch(findUserByUsernameThunk(username))
+    }, [])
   console.log(userprofile);
   
   
@@ -63,34 +60,34 @@ const  UserProfilePage = () => {
           <div class="panel-heading">
           <h4 class="panel-title">User profile</h4>
           </div>
-          <div className="panel-body">
-            <div className="profile__avatar">
+          <div class="panel-body">
+            <div class="profile__avatar">
               <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..."/>
             </div>
-            <div className="profile__header">
+            <div class="profile__header">
               <h4>{userprofile.firstName} {userprofile.lastName}<small>{userprofile.occupation}</small></h4>
-              <p className="text-muted">
+              <p class="text-muted">
                 {userprofile.about}
               </p>
               <p>
                 <a href="#">{userprofile.website}</a>
               </p>
             </div>
-            <div className="profile__header">
-            &nbsp;&nbsp; <span><i className="bi bi-chat">&nbsp;{userprofile.followers}   </i> &nbsp;Followers</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span><i className="bi bi-repeat">&nbsp;{userprofile.following}  </i>&nbsp; Following </span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span><i className="bi bi-hand-thumbs-up">&nbsp;{userprofile.likes} </i>&nbsp; Likes</span>
+            <div class="profile__header">
+            &nbsp;&nbsp; <span><i class="bi bi-chat">&nbsp;{userprofile.followers}   </i> &nbsp;Followers</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span><i class="bi bi-repeat">&nbsp;{userprofile.following}  </i>&nbsp; Following </span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span><i class="bi bi-hand-thumbs-up">&nbsp;{userprofile.likes} </i>&nbsp; Likes</span>
 
             </div>
           </div>
         </div>
 
-        <div className="panel panel-default">
-          <div className="panel-heading">
-          <h4 className="panel-title">User information</h4>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User information</h4>
           </div>
-          <div className="panel-body">
-            <table className="table profile__table">
+          <div class="panel-body">
+            <table class="table profile__table">
               <tbody>
                 <tr>
                   <th><strong>Location</strong></th>
@@ -113,12 +110,12 @@ const  UserProfilePage = () => {
           </div>
         </div>
 
-        <div className="panel panel-default">
-          <div className="panel-heading">
-          <h4 className="panel-title">Orders History</h4>
+        {/* <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Orders History</h4>
           </div>
-          <div className="panel-body">
-            <table className="table profile__table">
+          <div class="panel-body">
+            <table class="table profile__table">
               <tbody>
                 <tr>
                   <th><strong>Comments</strong></th>
@@ -144,64 +141,64 @@ const  UserProfilePage = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </div> */}
 
-        <div className="panel panel-default">
-          <div className="panel-heading">
-          <h4 className="panel-title">Latest posts</h4>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Latest posts</h4>
           </div>
-          <div className="panel-body">
-            <div className="profile__comments">
-              <div className="profile-comments__item">
-                <div className="profile-comments__controls">
-                  <a href="#"><i className="bi bi-share-square-o"></i></a>
-                  <a href="#"><i className="bi bi-edit"></i></a>
-                  <a href="#"><i className="bi bi-trash-o"></i></a>
+          <div class="panel-body">
+            <div class="profile__comments">
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="bi bi-share-square-o"></i></a>
+                  <a href="#"><i class="bi bi-edit"></i></a>
+                  <a href="#"><i class="bi bi-trash-o"></i></a>
                 </div>
-                <div className="profile-comments__avatar">
+                <div class="profile-comments__avatar">
                   <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..."/>
                 </div>
-                <div className="profile-comments__body">
-                  <h5 className="profile-comments__sender">
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
                     Richard Roe <small>2 hours ago</small>
                   </h5>
-                  <div className="profile-comments__content">
+                  <div class="profile-comments__content">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, corporis. Voluptatibus odio perspiciatis non quisquam provident, quasi eaque officia.
                   </div>
                 </div>
               </div>
-              <div className="profile-comments__item">
-                <div className="profile-comments__controls">
-                  <a href="#"><i className="bi bi-share-square-o"></i></a>
-                  <a href="#"><i className="bi bi-edit"></i></a>
-                  <a href="#"><i className="bi bi-trash-o"></i></a>
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="bi bi-share-square-o"></i></a>
+                  <a href="#"><i class="bi bi-edit"></i></a>
+                  <a href="#"><i class="bi bi-trash-o"></i></a>
                 </div>
-                <div className="profile-comments__avatar">
+                <div class="profile-comments__avatar">
                   <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..."/>
                 </div>
-                <div className="profile-comments__body">
-                  <h5 className="profile-comments__sender">
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
                     Richard Roe <small>5 hours ago</small>
                   </h5>
-                  <div className="profile-comments__content">
+                  <div class="profile-comments__content">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero itaque dolor laboriosam dolores magnam mollitia, voluptatibus inventore accusamus illo.
                   </div>
                 </div>
               </div>
-              <div className="profile-comments__item">
-                <div className="profile-comments__controls">
-                  <a href="#"><i className="bi bi-share-square-o"></i></a>
-                  <a href="#"><i className="bi bi-edit"></i></a>
-                  <a href="#"><i className="bi bi-trash-o"></i></a>
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="bi bi-share-square-o"></i></a>
+                  <a href="#"><i class="bi bi-edit"></i></a>
+                  <a href="#"><i class="bi bi-trash-o"></i></a>
                 </div>
-                <div className="profile-comments__avatar">
+                <div class="profile-comments__avatar">
                   <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."/>
                 </div>
-                <div className="profile-comments__body">
-                  <h5 className="profile-comments__sender">
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
                     Richard Roe <small>1 day ago</small>
                   </h5>
-                  <div className="profile-comments__content">
+                  <div class="profile-comments__content">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, esse, magni aliquam quisquam modi delectus veritatis est ut culpa minus repellendus.
                   </div>
                 </div>
@@ -211,17 +208,15 @@ const  UserProfilePage = () => {
         </div>
 
       </div>
-      <div className="col-xs-12 col-sm-3">
+      <div class="col-xs-12 col-sm-3">
         <p>
-          <a href="#" className="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
+          <a href="#" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
             Follow
           </a>
-          <a href="#" className="profile__contact-btn btn btn-lg btn-block btn-danger" data-toggle="modal" data-target="#profile__contact-form">
-            Like
-          </a>
+       
 
           <button
-                className="profile__contact-btn btn btn-lg btn-block btn-warning" data-toggle="modal" data-target="#profile__contact-form"
+                className="profile__contact-btn btn btn-lg btn-block btn-danger" data-toggle="modal" data-target="#profile__contact-form"
                 onClick={() => dispatch(updateUserThunk({
                   ...userprofile,
                   likes: userprofile.likes + 1
@@ -239,49 +234,49 @@ const  UserProfilePage = () => {
    </span> */}
 
 
-          <button
+          {/* <button
                 className="profile__contact-btn btn btn-lg btn-block btn-warning" data-toggle="modal" data-target="#profile__contact-form"
                 onClick={handleUpdateUserProfileBtn}>
                 Edit Profile
-            </button>
+            </button> */}
         </p>
 
-        <hr className="profile__contact-hr"/>
+        <hr class="profile__contact-hr"/>
         
-        <div className="profile__contact-info">
-          <div className="profile__contact-info-item">
-            <div className="profile__contact-info-icon">
-            <i className="bi bi-telephone-fill"></i>
+        <div class="profile__contact-info">
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+            <i class="bi bi-telephone-fill"></i>
             </div>
-            <div className="profile__contact-info-body">
-              <h5 className="profile__contact-info-heading">Work number</h5>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Work number</h5>
               (000)987-65-43
             </div>
           </div>
-          <div className="profile__contact-info-item">
-            <div className="profile__contact-info-icon">
-            <i className="bi bi-telephone-fill"></i>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+            <i class="bi bi-telephone-fill"></i>
             </div>
-            <div className="profile__contact-info-body">
-              <h5 className="profile__contact-info-heading">Mobile number</h5>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Mobile number</h5>
               (000)987-65-43
             </div>
           </div>
-          <div className="profile__contact-info-item">
-            <div className="profile__contact-info-icon">
-            <i className="bi bi-envelope"></i>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+            <i class="bi bi-envelope"></i>
             </div>
-            <div className="profile__contact-info-body">
-              <h5 className="profile__contact-info-heading">E-mail address</h5>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">E-mail address</h5>
               <a href="mailto:admin@domain.com">admin@domain.com</a>
             </div>
           </div>
-          <div className="profile__contact-info-item">
-            <div className="profile__contact-info-icon">
-            <i className="bi bi-building"></i>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+            <i class="bi bi-building"></i>
             </div>
-            <div className="profile__contact-info-body">
-              <h5 className="profile__contact-info-heading">Work address</h5>
+            <div class="profile__contact-info-body">
+              <h5 class="profile__contact-info-heading">Work address</h5>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </div>
           </div>
@@ -294,4 +289,4 @@ const  UserProfilePage = () => {
  )
 }
 
-export default UserProfilePage;
+export default UserProfilePrivatePage;
