@@ -33,12 +33,18 @@ const DonorItem = (
 ) => {
     
     const linkTo = (useSelector((state) => !state.users.currentUser)) ? "/login" : `/donor/${donor.userName}`
-    console.log(linkTo)
+    // console.log(linkTo)
     return(
         <Link to={linkTo} className="text-decoration-none">
             <div className="pb-3">
                 <div className="card text-start">
-                    <img src={`/images/${donor.image}`} className="card-img-top" height="200px" alt="..."/>
+                    {
+                        (donor.image) &&
+                        <img className="w-100 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+                    }
+                    {
+                        <img className="w-100 rounded-2" src="/images/background.jfif" alt="landing background"/>
+                    }
                     <div className="card-body">
                         <div className="row">
                             <h6 className="col-8">{donor.name}</h6>

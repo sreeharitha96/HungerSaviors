@@ -3,6 +3,8 @@ import {Button} from "react-bootstrap";
 import OrderItem from "../inventory/order-item";
 import {useDispatch, useSelector} from "react-redux";
 import {createOrderThunk} from "../services/order-thunks";
+import {parse} from "@fortawesome/fontawesome-svg-core";
+import {updateDonorThunk} from "../services/donor-thunks";
 
 const CustomerViewOfDonor = ({donor}) => {
     const {currentUser} = useSelector((state) => state.users)
@@ -10,7 +12,7 @@ const CustomerViewOfDonor = ({donor}) => {
     const [cart, setCart] = useState({})
 
     const [order, setOrder] = useState(false);
-    let food = donor.inventory;
+    const [food, setFood] = useState(donor.inventory);
     // console.log('donor: ', donor);
     // console.log('donor.inventory: ', donor.inventory);
     const dispatch = useDispatch();
@@ -18,9 +20,12 @@ const CustomerViewOfDonor = ({donor}) => {
     const addOrderHandler = (key, avail) => {
         const quant =  document.getElementById(key).value;
         if(quant !== '' && quant <= avail && quant !== 0) {
-            setCart({ ...cart, [key]: quant });
+            setCart({ ...cart, [key]: parseInt(quant) });
+            setFood({...food, [key]: avail - quant})
+            setOrder(true)
+        } else {
+            alert("Selected Quantity is more than Available")
         }
-        setOrder(true)
     }
 
     const UpdateOrderHandler = () => {
@@ -43,7 +48,11 @@ const CustomerViewOfDonor = ({donor}) => {
             "status": "COMPLETED",
             "orderList": cart
         }
+        const newDonor = {...donor, inventory:food}
         dispatch(createOrderThunk(newOrder))
+        alert("Order Placed!")
+        setOrder(false);
+        dispatch(updateDonorThunk(newDonor))
     }
 
     return(
@@ -51,10 +60,22 @@ const CustomerViewOfDonor = ({donor}) => {
             <div className="col-9">
             <div className="image-container">
                 <div className="main_image">
-                    <img className="w-100 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+                    {
+                        (donor.image) &&
+                        <img className="w-100 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+                    }
+                    {
+                        <img className="w-100 rounded-2" src="/images/background.webp" alt="landing background"/>
+                    }
                 </div>
                 <div className="overlay_image">
-                    <img className="w-100 rounded-pill float-start" src={`/images/${donor.dp}`} alt="profile"/>
+                    {
+                        (donor.dp) &&
+                        <img className="w-100 rounded-pill float-start" src={`/images/${donor.dp}`} alt="profile"/>
+                    }
+                    {
+                        <img className="w-100 rounded-pill float-start" src="/images/rest_logo.jfif" alt="profile"/>
+                    }
                 </div>
             </div>
 
@@ -73,7 +94,9 @@ const CustomerViewOfDonor = ({donor}) => {
                 <div className="text-start">
                     <div className="row">
                     {
+                        // console.log(food) &&
                         Object.keys(food).map((key, i) => (
+                        food[key] > 0 &&
                           <div key={i} className="p-1 col-12 col-lg-6">
                               <div className="card text-start p-1 pt-0">
                                   <div className="row">
