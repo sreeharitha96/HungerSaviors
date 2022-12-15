@@ -42,11 +42,21 @@ const DonorViewOfDonor = (
                 <div className="container ps-5 pe-5">
                     <div className="image-container">
                         <div className="main_image">
-                            <img className="w-100 mt-2 rounded-2" src={`/images/${donor.coverPhoto}`} alt="landing background"/>
-                        </div>
+                            {
+                                (donor.image) &&
+                                <img className="w-100 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+                            }
+                            {
+                                <img className="w-100 rounded-2" src="/images/background.jfif" alt="landing background"/>
+                            }                        </div>
                         <div className="overlay_image">
-                            <img className="w-100 rounded-pill float-start" src={`/images/${donor.profilePhoto}`} alt="profile"/>
-                        </div>
+                            {
+                                (donor.dp) &&
+                                <img className="w-100 rounded-pill float-start" src={`/images/${donor.dp}`} alt="profile"/>
+                            }
+                            {
+                                <img className="w-100 rounded-pill float-start" src="/images/rest_logo.jfif" alt="profile"/>
+                            }                        </div>
                     </div>
 
                     <div className="row d-block text-start">

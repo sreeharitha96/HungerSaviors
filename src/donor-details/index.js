@@ -38,11 +38,10 @@ const DonorDetails = ({ updateUser, userState }) => {
     <>
       {loading2 ? (
         <li className="list-group-item">Loading...</li>
-      ) : donor.userName === currentUser.userName ? (
-        <DonorViewOfDonor key={donor._id} donor={donor} />
-      ) : (
-        <CustomerViewOfDonor key={donor._id} donor={donor} />
-      )}
+      ) :  donor.userName === currentUser.userName ? (
+          <DonorViewOfDonor key={donor._id} donor={donor}/>
+      ): <CustomerViewOfDonor key={donor._id} donor={donor}/>
+      }
     </>
   );
 };

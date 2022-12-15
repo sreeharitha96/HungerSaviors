@@ -17,13 +17,13 @@ const DonorItem = ({ donor }) => {
           style={{ borderRadius: '15px' }}
         >
           <div className="m-3" style={{ borderRadius: '15px' }}>
-            <img
-              src={`/images/${donor.profilePhoto}`}
-              className="card-img-top"
-              height="250px"
-              alt="..."
-              style={{ borderRadius: '15px' }}
-            />
+            {
+                (donor.image) &&
+                <img className="w-100 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+            }
+            {
+              <img className="w-100 rounded-2" src="/images/background.jfif" alt="landing background"/>
+            }
           </div>
           <div className="card-body">
             <div className="row">

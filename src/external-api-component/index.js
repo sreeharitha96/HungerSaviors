@@ -1,25 +1,20 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import axios from 'axios';
-import {findDonorsByCitynameThunk} from "../services/search-thunk";
-import {findItems} from "../services/nutrients-service";
-import {findItemsThunk} from "../services/nutrients-thunks";
 
 function ApiCall() {
     const [input, setInput] = useState('');
-    const dispatch = useDispatch()
-    const {items, itemsLoading} = useSelector(
-        state => state.itemsData)
+    const [items, setItems] = useState('');
+    const [available, setAvailable] = useState(false);
+
     const handlesearch = () => {
         console.log(input)
-        // dispatch(findItemsThunk(input))
-        // console.log("loading " + itemsLoading + " items :" + items)
 
         const options = {
             method: 'GET',
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/search',
             params: {
-                query: 'yogurt',
+                query: input,
                 addChildren: 'true',
                 minProteinPercent: '5',
                 maxProteinPercent: '50',
@@ -39,27 +34,20 @@ function ApiCall() {
             }
         };
 
+        // const newOptions = {...options, query: input}
+        console.log(options)
         axios.request(options).then(function (response) {
             console.log(response.data);
             console.log(response.data.results[0].name)
-            return (
-                <>
-                    <p>{response.data.results[0].name}</p>
-
-                </>
-                   )
-
+            console.log(response.data.results);
+            setItems(response.data.results);
+            setAvailable(true);
+            console.log(items[0])
         }).catch(function (error) {
             console.error(error);
         });
     }
 
-    // const handlesearch = () => {
-    //     return(
-    //         <p>{list.results[0].name}</p>
-    //           )
-    //
-    // }
     return (
         <>
             <div className="container pt-4">
@@ -67,7 +55,7 @@ function ApiCall() {
                     <div className="col-12 col-md-8 d-inline-block">
                         <h3 className="float-start">Search Nutrition Information</h3>
                         <br/>
-                        <nav className="navbar navbar-default float-start">
+                        <nav className="navbar navbar-default float-start bg-danger">
                             <div className="nav nav-justified navbar-nav ">
 
                                 <form className="navbar-form navbar-search" role="search">
@@ -79,7 +67,7 @@ function ApiCall() {
 
                                         <div className="input-group-btn">
                                             <button type="button" className="btn btn-search btn-info"
-                                                onClick={handlesearch}>
+                                                    onClick={handlesearch}>
                                                 <span className="glyphicon glyphicon-search"></span>
                                                 <span className="label-icon">Search</span>
                                             </button>
@@ -90,15 +78,28 @@ function ApiCall() {
 
                             </div>
                         </nav>
+                        <div className="bg-secondary p-5">
+                            {
+                                available &&
+                                // <div>{items[0].name} id: {items[0].id}</div>
+                                // // // &&
+                                // console.log(items) &&
+                                items.forEach((item) => (
+                                    <>
+                                        <h1 className="text-danger bg-dark">{item}</h1>
+                                        {/*<p>{item.id}</p>*/}
+                                    </>
+                                    // console.log(item)
+                                ))
+
+                            }
+                        </div>
+
                     </div>
                     <div className="d-none col-md-4">
                     </div>
                 </div>
-
             </div>
-
-
-
         </>
     )
 }
