@@ -9,9 +9,9 @@ const InventoryItemEdit = (
             userName: "rest1",
             name: "restaurant1",
             location: "boston",
-            image: "changing-lifes.jpg",
-            dp: "logo.png",
-            about : "about the donor1",
+            coverPhoto: "changing-lifes.jpg",
+            profilePhoto: "logo.png",
+            description : "about the donor1",
             followers: 123,
             following: 234,
             liked: true,
@@ -22,7 +22,7 @@ const InventoryItemEdit = (
                 "pasta": 10
             },
             foodavailabilityposts: "array",
-            storetimings:"10:00am to 9:00pm",
+            storeTimings:"10:00am to 9:00pm",
             rewardpoints: 987,
             foodreviews: {
                 "review1": "best place!",

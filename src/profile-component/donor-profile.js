@@ -62,7 +62,7 @@ const  DonorProfilePage = () => {
           </div>
           <div class="panel-body">
             <div class="profile__avatar">
-              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..."/>
+              <img src={donorsData.profilePhoto} alt="..."/>
             </div>
             <div class="profile__header">
               <h4>{donorsData.firstName} {donorsData.lastName}<small>{donorsData.occupation}</small></h4>

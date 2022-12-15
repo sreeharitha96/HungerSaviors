@@ -140,7 +140,7 @@ function Register() {
   
   return (
     <>
-      <MDBTabs className='mb-3'>
+      <MDBTabs className='mb-3' >
         <MDBTabsItem>
           <MDBTabsLink onClick={() => handleBasicClick('tab1')} active={basicActive === 'tab1'}>
             Customer

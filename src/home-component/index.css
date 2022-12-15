@@ -1,19 +1,20 @@
-.ws-background{
-    /*background-image: url("../../public/images/italian-ingredients.webp");*/
-    background-image: url("../../public/images/italian-ingredients.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
+.ws-background {
+  /*background-image: url("../../public/images/italian-ingredients.webp");*/
+  background-image: url('../../public/images/changing-lives.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.ws-overlap{
-    height: 100vh;
+
+.ws-overlap {
+  height: 100vh;
 }
-.ws-nav-bar{
-    opacity: 0.95;
+.ws-nav-bar {
+  opacity: 0.95;
 }
-.ws-logo{
-    width:50px;
+.ws-logo {
+  width: 50px;
 }
-.ws-landing-card{
-    background-color: #61dafb;
-    width: 80%;
+.ws-landing-card {
+  /* background-color: #61dafb; */
+  width: 80%;
 }

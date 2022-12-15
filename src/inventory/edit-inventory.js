@@ -8,20 +8,20 @@ const EditInventory = (
             userName: "rest1",
             name: "restaurant1",
             location: "boston",
-            image: "changing-lifes.jpg",
-            dp: "logo.png",
-            about : "about the donor1",
+            coverPhoto: "changing-lifes.jpg",
+            profilePhoto: "logo.png",
+            description : "about the donor1",
             followers: 123,
             following: 234,
             liked: true,
             likes: 14,
             rating: 4.2,
-            foodavailable: {
+            inventory: {
                 "apple pie": 2,
                 "pasta": 10
             },
             foodavailabilityposts: "array",
-            storetimings:"10:00am to 9:00pm",
+            storeTimings:"10:00am to 9:00pm",
             rewardpoints: 987,
             foodreviews: {
                 "review1": "best place!",
@@ -34,10 +34,10 @@ const EditInventory = (
         <div className="container ps-5 pe-5">
             <div className="image-container">
                 <div className="main_image">
-                    <img className="w-100 mt-2 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+                    <img className="w-100 mt-2 rounded-2" src={`/images/${donor.coverPhoto}`} alt="landing background"/>
                 </div>
                 <div className="overlay_image">
-                    <img className="w-100 rounded-pill float-start" src={`/images/${donor.dp}`} alt="profile"/>
+                    <img className="w-100 rounded-pill float-start" src={`/images/${donor.profilePhoto}`} alt="profile"/>
                 </div>
             </div>
 

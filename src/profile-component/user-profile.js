@@ -65,7 +65,7 @@ const  UserProfilePage = () => {
           </div>
           <div className="panel-body">
             <div className="profile__avatar">
-              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..."/>
+              <img src={userprofile.profilePhoto} alt="..."/>
             </div>
             <div className="profile__header">
               <h4>{userprofile.firstName} {userprofile.lastName}<small>{userprofile.occupation}</small></h4>
@@ -106,7 +106,7 @@ const  UserProfilePage = () => {
                 </tr>
                 <tr>
                   <th><strong>Date of Birth</strong></th>
-                  <td>{userprofile.dateofbirth}</td>
+                  <td>{userprofile.dateOfBirth}</td>
                 </tr>
               </tbody>
             </table>
@@ -159,7 +159,7 @@ const  UserProfilePage = () => {
                   <a href="#"><i className="bi bi-trash-o"></i></a>
                 </div>
                 <div className="profile-comments__avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..."/>
+                  <img src="./images/profilePhoto.png" alt="..."/>
                 </div>
                 <div className="profile-comments__body">
                   <h5 className="profile-comments__sender">

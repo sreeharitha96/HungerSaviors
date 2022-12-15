@@ -33,6 +33,7 @@ const PendingDonorItem = (
     const Show = () => (
         <div className="pb-3">
                 <div className="card text-start">
+                    <img src={`/images/${donor.profilePhoto}`} className="card-img-top" height="200px" alt="..."/>
                     <div className="card-body">
                         <div className="row">
                             <div className="col-8">
@@ -49,7 +50,7 @@ const PendingDonorItem = (
             </div>
     )
     return(
-           !approved && <Show/>
+            !approved && <Show/>
         
     )
 }
