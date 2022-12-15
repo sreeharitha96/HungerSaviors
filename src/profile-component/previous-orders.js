@@ -12,12 +12,13 @@ import OrderItem from './order-item';
 const PreviousOrders= () =>  {
     const {orders, loading4} = useSelector((state) => state.orders);
     const {userprofile, loading3} = useSelector((state) => state.userprofile);
+    const {currentUser}= useSelector((state)=> state.users)
     const dispatch = useDispatch()
-    console.log(userprofile);
-
+    console.log(userprofile.userName)
     useEffect(() => {
-        dispatch(findPreviousOrdersByCustomernameThunk(userprofile.username))
-        }, [])
+        dispatch(findPreviousOrdersByCustomernameThunk(userprofile.userName))
+        }, [dispatch])
+        console.log(userprofile)
         console.log(orders);
 
     return (

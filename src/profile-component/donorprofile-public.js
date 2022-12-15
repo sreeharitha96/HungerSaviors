@@ -6,27 +6,18 @@ import {findDonorByUsernameThunk, updateDonorThunk} from "../services/donor-thun
 import userprofileReducer from '../reducers/userprofile-reducer';
 
 
-const  DonorProfilePage = () => {
+const  DonorProfilePublicPage = () => {
   const navigate = useNavigate()
 
-  const {currentUser} = useSelector((state)=> state.users)
+  const userName="starmarket"
   const {donor, loading2} = useSelector((state) => state.donorsData);
   console.log(useSelector((state) => state.donor))
-  console.log(currentUser)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(findDonorByUsernameThunk(currentUser.userName))
+    dispatch(findDonorByUsernameThunk(userName))
     }, [dispatch])
     
   console.log(donor);
-
- const handleOrders = () =>{
-    navigate('/donororders')
- }
-
-  const handleUpdateDonorProfileBtn = () => {
-    navigate('/updateDonor')
-}
 
  return (   
      <>
@@ -64,42 +55,28 @@ const  DonorProfilePage = () => {
               <p>
                 <a href="#">{donor.name}.com</a>
               </p>
-            </div>
-            <div class="profile__header">
-            <table class="table profile__table">
-              <tbody>
-                <tr>
-                  <th><button
-                className="profile__contact-btn btn btn-block btn-info " data-toggle="modal" data-target="#profile__contact-form"
-                ><span><i class="bi bi-heart-fill"/> </span>
-                Likes for Me : {donor.likes}
-            </button>
-            </th>
-                  <th>
-                    <button
-                className="profile__contact-btn btn btn-block btn-warning float-end" data-toggle="modal" data-target="#profile__contact-form"
-                onClick={handleUpdateDonorProfileBtn}>
-              <span><i class="bi bi-person-square"></i></span>  Edit Profile
-            </button>
-            </th>
-            <th>
-            <button
-                className="profile__contact-btn btn btn-block btn-warning" data-toggle="modal" data-target="#profile__contact-form"
-                onClick={handleOrders}>
-                  <span><i class="bi bi-list"></i></span>
-                Previous Food Orders
-            </button>
-            </th>
-           
-                </tr>
-                </tbody>
-                </table>
+              <p>
+              <span ><i class="bi bi-star-fill"/>&nbsp;
+                My Rating : {donor.rating}
+                </span> &nbsp;&nbsp;&nbsp;&nbsp;
+                <span >
     
-            
-            {/* &nbsp;&nbsp; <span><i class="bi bi-chat">&nbsp;{donor.followers}   </i> &nbsp;Followers</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span><i class="bi bi-repeat">&nbsp;{donor.following}  </i>&nbsp; Following </span> &nbsp;&nbsp;&nbsp;&nbsp;
-                <span><i class="bi bi-hand-thumbs-up">&nbsp;{donor.likes} </i>&nbsp; Likes</span> */}
+     <i onClick={() => dispatch(updateDonorThunk({
+       ...donor,
+       likes: donor.likes + 1
+     }))} className="bi bi-heart-fill me-2 text-danger"></i>
+   </span>
+   Likes: {donor.likes}
 
+              </p>
+              {/* <button
+                className="profile__contact-btn btn btn-lg btn-block btn-warning" data-toggle="modal" data-target="#profile__contact-form"
+                onClick={() => dispatch(updateDonorThunk({
+                  ...donor,
+                  likes: donor.likes + 1
+                }))}>
+                Like : {donor.likes}
+            </button> */}
             </div>
           </div>
         </div>
@@ -144,4 +121,4 @@ const  DonorProfilePage = () => {
  )
 }
 
-export default DonorProfilePage;
+export default DonorProfilePublicPage;

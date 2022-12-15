@@ -18,13 +18,17 @@ import editprofileReducer from './reducers/editprofile-reducer';
 import searchReducer from './reducers/search-reducer';
 import previousorderReducer from './reducers/previousorder-reducer';
 import PreviousOrders from './profile-component/previous-orders';
-import UserProfilePrivatePage from './profile-component/userprofile-private';
+import UserProfilePublicPage from './profile-component/userprofile-public';
 import userReducer from './users/user-reducer';
 import orderReducer from './reducers/order-reducer';
 import AdminPage from './admin';
 import Login from './login-register-component/login-component';
 import Register from './login-register-component/register-component';
 import ApiCall from "./external-api-component";
+import DonorProfilePage from './profile-component/donor-profile';
+import EditDonorUserProfile from './editprofile-component/donor-editprofile';
+import PreviousDonorOrders from './profile-component/previous-donors-orders';
+import DonorProfilePublicPage from './profile-component/donorprofile-public';
 
 const store = configureStore({
   reducer: {
@@ -87,10 +91,15 @@ function App() {
                   }
                 />
                 <Route path="/admin" element={<AdminPage />} />
+                <Route path="/donorprofile/" element={<DonorProfilePage/>}/>
+                <Route path="/updateDonor" element={<EditDonorUserProfile/>}/>
+                <Route path="/donororders" element={<PreviousDonorOrders/>}/>
+                <Route path= "/publicuser" element={<UserProfilePublicPage/>}/>
+                <Route path= "/publicdonor" element={<DonorProfilePublicPage/>}/>
                 <Route path="/order/*" element={<PreviousOrders />} />
                 <Route
-                  path="/privateuser"
-                  element={<UserProfilePrivatePage />}
+                  path="/publicuser"
+                  element={<UserProfilePublicPage />}
                 />
                 <Route path="/search/nutrients/*" element={<ApiCall/>}/>
               </Fragment>
