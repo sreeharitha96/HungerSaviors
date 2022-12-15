@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {createOrderThunk} from "../services/order-thunks";
 import {parse} from "@fortawesome/fontawesome-svg-core";
 import {updateDonorThunk} from "../services/donor-thunks";
+import {Link} from "react-router-dom";
 
 const CustomerViewOfDonor = ({donor}) => {
     const {currentUser} = useSelector((state) => state.users)
@@ -120,10 +121,12 @@ const CustomerViewOfDonor = ({donor}) => {
                     </div>
                 </div>
             </div>
+            <Link to="/search/nutrients" className="col-3">
+                <Button>Look up Nutritional Value</Button>
+            </Link>
             {
                 order && <UpdateOrderHandler />
             }
-
         </div>
     )
 

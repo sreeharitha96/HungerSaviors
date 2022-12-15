@@ -1,5 +1,4 @@
 import { createSlice} from "@reduxjs/toolkit";
-// import donorArray from "../data/donor.json";
 import {
     findDonorByUsernameThunk,
     findDonorThunk,

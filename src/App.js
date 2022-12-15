@@ -23,6 +23,8 @@ import userReducer from './users/user-reducer';
 import AdminPage from "./admin";
 import Login from './login-register-component/login-component';
 import Register from './login-register-component/register-component';
+import ApiCall from "./external-api-component";
+import itemsReducer from "./reducers/nutrients-reducer.js"
 
 const store = configureStore(
     {reducer: {
@@ -31,7 +33,8 @@ const store = configureStore(
             userprofile: userprofileReducer, 
             profile: editprofileReducer, 
             donors: searchReducer,
-           orders: previousorderReducer
+            orders: previousorderReducer,
+            itemsData: itemsReducer
         }});
 
 
@@ -58,6 +61,7 @@ function App() {
                             <Route path="/admin" element={<AdminPage/>}/>
                             <Route path="/order/*" element={<PreviousOrders/>}/>
                             <Route path= "/privateuser" element={<UserProfilePrivatePage/>}/>
+                            <Route path="/search/nutrients/*" element={<ApiCall/>}/>
                       </Fragment>
                         }
                   </Routes>
