@@ -70,7 +70,7 @@ const  UserProfilePage = () => {
             
                   <th>
                     <button
-                className="profile__contact-btn btn btn-block btn-warning float-end" data-toggle="modal" data-target="#profile__contact-form"
+                className="profile__contact-btn btn btn-block btn-info float-end" data-toggle="modal" data-target="#profile__contact-form"
                 onClick={handleUpdateUserProfileBtn}>
               <span><i class="bi bi-person-square"></i></span>  Edit Profile
             </button>

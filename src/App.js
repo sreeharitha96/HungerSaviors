@@ -63,11 +63,15 @@ function App() {
               element={<Login updateUser={updateUser} userState={user} />}
             />
             <Route path="/register" element={<Register />} />
+            <Route path= "/publicuser" element={<UserProfilePublicPage/>}/>
+            <Route path= "/publicdonor" element={<DonorProfilePublicPage/>}/>
+
             {store.getState().users && (
               <Fragment>
                 <Route
                   path="/profile/*"
                   element={
+                    
                     <ProfilePage updateUser={updateUser} userState={user} />
                   }
                 />
@@ -94,8 +98,6 @@ function App() {
                 <Route path="/donorprofile/" element={<DonorProfilePage/>}/>
                 <Route path="/updateDonor" element={<EditDonorUserProfile/>}/>
                 <Route path="/donororders" element={<PreviousDonorOrders/>}/>
-                <Route path= "/publicuser" element={<UserProfilePublicPage/>}/>
-                <Route path= "/publicdonor" element={<DonorProfilePublicPage/>}/>
                 <Route path="/order/*" element={<PreviousOrders />} />
                 <Route
                   path="/publicuser"
