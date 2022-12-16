@@ -9,7 +9,6 @@ const profileSlice = createSlice({
        ...state,
        ...action.payload
      }  
-     console.log("edit profile reducer", JSON.stringify(action.payload) )
      return data;
    },
 

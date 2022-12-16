@@ -26,7 +26,6 @@ function Login({ updateUser, userState }) {
   const test = paths[1];
 
   useEffect(() => {
-    console.log(test, 'test');
     if (test === 'login') {
       updateUser(true);
     }
@@ -108,7 +107,7 @@ function Login({ updateUser, userState }) {
               {currentUser && currentUser.role === 'CUSTOMER' && (
                 <Navigate to="/home" />
               )}
-              {currentUser && currentUser.role === 'DONOR' && (
+              {currentUser && currentUser.role === 'DONOR' && currentUser.status === "Approved" && (
                 <Navigate to={`/donor/${currentUser.userName}`} />
               )}
               {currentUser && currentUser.role === 'ADMIN' && (

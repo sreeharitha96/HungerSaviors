@@ -34,12 +34,7 @@ const InventoryItem = (
         // }
     }
 ) => {
-    // console.log(typeof(food))
-    // console.log(food);
-    // console.log(donor)
-    // console.log(donor.foodavailable)
-    // let food = donor.foodavailable;
-    console.log(donor);
+
     return(
 
         Object.keys(food).map((key, i) => (

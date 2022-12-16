@@ -16,18 +16,10 @@ const OrderItem = (
           }
     }
 ) => {
-    // console.log(donor._id)
     const foodlist=order.orderList
     for (let i=0; i< foodlist.length; i++) {
         const string1 = foodlist[i];
-        console.log(string1);
      }
-    //  const keys = Object.keys(foodlist);
-    //  Object.values(animals).forEach(val => console.log(val));
-    //   Object.ke
-// print all keys
-
-// console.log(keys);
 
     return(
             <div className="pb-3">

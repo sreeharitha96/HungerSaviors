@@ -26,6 +26,7 @@ function RegisterCustomer() {
     const [phone, setPhone] = useState("12345678")
     const [error, setError] = useState(null)
     const role = "DONOR"
+    const [btnClicked, setBtnClicked] = useState(false)
     const dispatch = useDispatch()
     const handleRegisterBtn = () => {
         if (password !== validatePassword) {
@@ -33,6 +34,7 @@ function RegisterCustomer() {
             return
         }
         setError(null)
+        setBtnClicked(true)
         const newUser = {userName, name, email, password, location, phone, role}
         dispatch(registerThunk(newUser))
     }
@@ -54,6 +56,12 @@ function RegisterCustomer() {
               error &&
               <div className="alert alert-danger">
                   {error}
+              </div>
+            }
+            {
+              btnClicked &&
+              <div className='alert alert-success'>
+                Requested, admin will approve you soon, login after some time.
               </div>
             }
               <div className='d-flex flex-row mt-2'>

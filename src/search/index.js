@@ -14,7 +14,6 @@ const Search =() => {
         
           dispatch(findDonorsByCitynameThunk(cityname))
           navigate('/searchresults')
-           console.log(cityname)
     }
    
 return(
