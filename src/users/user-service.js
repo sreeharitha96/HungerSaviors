@@ -25,7 +25,9 @@ export const login = async (user) => {
         return response
     }
     
+    console.log('response.data: ', response.data);
     return response.data
+    
 }
 
 export const profile = async () => {

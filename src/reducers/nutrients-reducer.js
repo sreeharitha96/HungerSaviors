@@ -19,7 +19,6 @@ const itemsSlice = createSlice({
                                            (state, {payload}) => {
                                                state.itemsLoading = false
                                                state.items = payload
-                                               console.log("reducer " + state.items)
                                            },
                                        [findItemsThunk.rejected]:
                                            (state) => {

@@ -12,21 +12,15 @@ const DonorList = ({ status, updateUser, userState }) => {
     dispatch(findDonorThunk(status));
   }, [dispatch]);
 
-  console.log(donors);
-
   const { pathname } = useLocation();
   const paths = pathname.split('/');
   const donorID = paths[1];
-
-  // console.log(donorID);
 
   useEffect(() => {
     if (donorID === 'home') {
       updateUser(true);
     }
   }, []);
-
-  console.log(userState);
 
   const donorArray = useSelector((state) => state.donorsData);
   return (

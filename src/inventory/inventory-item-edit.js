@@ -67,7 +67,6 @@ const InventoryItemEdit = (
                 ...donor,
                 inventory: newInv
             }
-            // console.log(typeof(newDonor._id))
             dispatch(updateDonorThunk(newDonor));
             setVal('');
         }

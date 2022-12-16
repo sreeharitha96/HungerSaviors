@@ -190,7 +190,9 @@ const  DonorProfilePage = () => {
            
 
             {/* &nbsp;&nbsp; <span><i class="bi bi-chat">&nbsp;{donor.followers}   </i> &nbsp;Followers</span> &nbsp;&nbsp;&nbsp;&nbsp;
+
                 <span><i class="bi bi-repeat">&nbsp;{donor.following}  </i>&nbsp; Following </span> &nbsp;&nbsp;&nbsp;&nbsp;
+
                 <span><i class="bi bi-hand-thumbs-up">&nbsp;{donor.likes} </i>&nbsp; Likes</span> */}
 
 

@@ -17,7 +17,6 @@ function LoginRegister({ updateUser, userState }) {
 
   // adding small changes
   useEffect(() => {
-    console.log(test, 'test');
     if (test === 'login') {
       updateUser(true);
     }
