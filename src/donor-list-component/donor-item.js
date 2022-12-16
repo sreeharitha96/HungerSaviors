@@ -27,13 +27,16 @@ const DonorItem = ({ donor }) => {
           </div>
           <div className="card-body">
             <div className="row">
+              
+              <Link to={`/publicdonor/${donor.userName}`} className="text-decoration-none col-8">
               <h4
-                className="col-8"
+                
                 style={{ color: '#000000', fontWeight: 700 }}
               >
                 {donor.name}
               </h4>
-              <h4 className="col-4 large text-end">{donor.rating}</h4>
+              </Link>
+              <h4 className="col-4 small text-end">{donor.rating}</h4>
             </div>
             <h5 className="small">{donor.location}</h5>
             <div className="pb-2" style={{ fontSize: '15px' }}>

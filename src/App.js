@@ -64,7 +64,7 @@ function App() {
             />
             <Route path="/register" element={<Register />} />
             <Route path= "/publicuser" element={<UserProfilePublicPage/>}/>
-            <Route path= "/publicdonor" element={<DonorProfilePublicPage/>}/>
+            <Route path= "/publicdonor/*" element={<DonorProfilePublicPage/>}/>
 
             {store.getState().users && (
               <Fragment>
