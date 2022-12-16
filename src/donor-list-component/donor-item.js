@@ -18,8 +18,8 @@ const DonorItem = ({ donor }) => {
         >
           <div className="m-3" style={{ borderRadius: '15px' }}>
             {
-                (donor.image) &&
-                <img className="w-100 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+                (donor.coverPhoto) &&
+                <img className="w-100 rounded-2" src={`/images/${donor.coverPhoto}`} alt="landing background"/>
             }
             {
               <img className="w-100 rounded-2" src="/images/background.jfif" alt="landing background"/>

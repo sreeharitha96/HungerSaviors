@@ -65,8 +65,8 @@ const CustomerViewOfDonor = ({ donor }) => {
         <div className="image-container">
           <div className="main_image">
             {
-                (donor.image) &&
-                <img className="w-100 rounded-2" src={`/images/${donor.image}`} alt="landing background"/>
+                (donor.coverPhoto) &&
+                <img className="w-100 rounded-2" src={`/images/${donor.coverPhoto}`} alt="landing background"/>
             }
             {
               <img className="w-100 rounded-2" src="/images/background.webp" alt="landing background"/>
@@ -74,8 +74,8 @@ const CustomerViewOfDonor = ({ donor }) => {
           </div>
           <div className="overlay_image">
             {
-                (donor.dp) &&
-                <img className="w-100 rounded-pill float-start" src={`/images/${donor.dp}`} alt="profile"/>
+                (donor.profilePhoto) &&
+                <img className="w-100 rounded-pill float-start" src={`/images/${donor.profilePhoto}`} alt="profile"/>
             }
             {
               <img className="w-100 rounded-pill float-start" src="/images/rest_logo.jfif" alt="profile"/>

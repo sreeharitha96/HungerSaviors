@@ -145,17 +145,32 @@ function NavBar({ userState }) {
                         Edibles left? Go on and make a change by donating!<br/>
                         Need them? We are here to find someone out there to help you!
                       </p>
+                      {
+                    !currentUser ?
                       <Link to="/login">
                         <Button
                           type="primary"
                           shape="round"
                           // icon={<DownloadOutlined />}
-                          className="mt-3"
+                          className="float-end me-3"
                           size={'large'}
                         >
                           Login / Sign Up
                         </Button>
+                      </Link> :
+                      <Link to="/">
+                        <Button
+                          type="primary"
+                          shape="round"
+                          // icon={<DownloadOutlined />}
+                          className="float-end me-3"
+                          size={'large'}
+                          onClick={() => handleLogoutBtn()}
+                        >
+                          Logout
+                        </Button>
                       </Link>
+                    }
                     </div>
                   </div>
                   <div className="col-6">
