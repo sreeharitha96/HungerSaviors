@@ -64,20 +64,21 @@ const  DonorProfilePage = () => {
               <p>
                 <a href="#">{donor.name}.com</a>
               </p>
+              <p>
+              <span >
+    
+    <i className="bi bi-heart-fill me-2 text-danger"></i>
+  </span>
+ <strong> Likes: {donor.likes}</strong>
+              </p>
             </div>
             <div class="profile__header">
             <table class="table profile__table">
               <tbody>
                 <tr>
-                  <th><button
-                className="profile__contact-btn btn btn-block btn-info " data-toggle="modal" data-target="#profile__contact-form"
-                ><span><i class="bi bi-heart-fill"/> </span>
-                Likes for Me : {donor.likes}
-            </button>
-            </th>
                   <th>
                     <button
-                className="profile__contact-btn btn btn-block btn-warning float-end" data-toggle="modal" data-target="#profile__contact-form"
+                className="profile__contact-btn btn btn-block btn-info float-end" data-toggle="modal" data-target="#profile__contact-form"
                 onClick={handleUpdateDonorProfileBtn}>
               <span><i class="bi bi-person-square"></i></span>  Edit Profile
             </button>
