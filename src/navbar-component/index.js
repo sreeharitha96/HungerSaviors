@@ -152,7 +152,7 @@ function NavBar({ userState }) {
                           type="primary"
                           shape="round"
                           // icon={<DownloadOutlined />}
-                          className="float-end me-3"
+                          className="mt-3"
                           size={'large'}
                         >
                           Login / Sign Up
@@ -163,7 +163,7 @@ function NavBar({ userState }) {
                           type="primary"
                           shape="round"
                           // icon={<DownloadOutlined />}
-                          className="float-end me-3"
+                          className="mt-3"
                           size={'large'}
                           onClick={() => handleLogoutBtn()}
                         >
