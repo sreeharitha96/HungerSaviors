@@ -15,11 +15,7 @@ const  UserProfilePage = () => {
   useEffect(() => {
 
     dispatch(findUserByUsernameThunk(currentUser.userName))
-    console.log(currentUser.userName)
-    }, [dispatch])
-
-  console.log(userprofile);
-  
+    }, [dispatch])  
   
  const handleOrders = () =>{
     navigate('/order')
@@ -50,7 +46,7 @@ const  UserProfilePage = () => {
           </div>
           <div className="panel-body">
             <div className="profile__avatar">
-              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..."/>
+              <img src={userprofile.profilePhoto} alt="..."/>
             </div>
             <div className="profile__header">
               <h4>{userprofile.firstName} {userprofile.lastName}<small>{userprofile.occupation}</small></h4>

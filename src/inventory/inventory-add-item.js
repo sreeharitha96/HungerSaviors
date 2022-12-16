@@ -52,7 +52,6 @@ const InventoryAddItem = (
                 ...donor,
                 inventory: newInv
             }
-            // console.log(typeof(newDonor._id))
             dispatch(updateDonorThunk(newDonor));
             setItemName('');
             setQuant('');

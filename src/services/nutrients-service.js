@@ -23,22 +23,8 @@ const options = {
     }
 };
 
-// axios.request(options).then(function (response) {
-//     console.log(response.data);
-// }).catch(function (error) {
-//     console.error(error);
-// });
-
 export const findItems = async (item) => {
-    console.log(item)
-    const newOptions = {...options, query: item}
-    console.log(newOptions)
-    // const response = await axios.request(newOptions);
-    // const items = response.data;
-    // console.log("service " + items);
-    // return items;
     axios.request(newOptions).then(function (response) {
-    console.log(response.data);
 }).catch(function (error) {
     console.error(error);
 });

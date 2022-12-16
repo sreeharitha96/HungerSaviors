@@ -24,7 +24,6 @@ const PendingDonorItem = (
 ) => {
     const dispatch = useDispatch();
     const handleApprove = () => {
-        console.log(donor._id)
         dispatch(approveDonorThunk(donor._id))
         setApproved(true)
     }

@@ -27,7 +27,6 @@ export const updateDonorThunk = createAsyncThunk(
         await service.updateDonor(donor)
         return donor
         // return donor._id
-        // console.log("thunk: " + donor);
     }
 )
 export const approveDonorThunk = createAsyncThunk(

@@ -34,7 +34,6 @@ const profileSlice = createSlice({
      
     //  [updateUserThunk.fulfilled]:
     //  (state, { payload }) => {
-    //    console.log(payload)
     //    state.loading = false
     // //    const profileNdx = state.profile
     // //      .findIndex((t) => t._id === payload._id)

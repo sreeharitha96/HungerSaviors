@@ -8,9 +8,7 @@ const SearchResults= () =>  {
     // useEffect(() => {
     //     if  (donors && donors.length > 0)
     //      setFlag(true)
-    //       console.log(donors)
     //     }, [donors])
-    console.log(donors)
     return (
         <>
         <div className='container'>
