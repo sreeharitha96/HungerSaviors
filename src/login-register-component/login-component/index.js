@@ -38,6 +38,7 @@ function Login({ updateUser, userState }) {
     dispatch(loginThunk(loginUser), [dispatch]);
   };
 
+  console.log("currentUser: ", currentUser)
   return (
     <MDBContainer className="my-5">
       <MDBCard>
