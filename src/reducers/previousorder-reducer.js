@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import {findOrderByDonorIdThunk} from "../services/order-thunks";
 import {findPreviousOrdersByCustomernameThunk}
   from "../services/previousorder-thunk";
 
 const initialState = {
     orders: [],
-    loading4: false
+    loading4: false,
+    previousorders:[],
+    previousordersloading:false
 }
 
 const orderSlice = createSlice({
@@ -26,6 +28,20 @@ const orderSlice = createSlice({
            (state) => {
               state.loading4 = false
         },
+        [findOrderByDonorIdThunk.pending]:
+            (state) => {
+                state.previousordersloading = true
+                state.previousorders = []
+            },
+        [findOrderByDonorIdThunk.fulfilled]:
+            (state, {payload}) => {
+            state.previousordersloading = false
+                state.previousorders = payload
+            },
+        [findOrderByDonorIdThunk.rejected]:
+            (state) => {
+            state.previousordersloading = false
+            }
      
        }
    
