@@ -27,6 +27,8 @@ const OrderItem = (
                     <div className="card-body">
                         <div className="row">
                             <h6 className="col-8">Ordered from {order.donorUserName}</h6>
+                            <h6 className="col-8">Ordered By {order.customerUserName}</h6>
+
                             <h6 className="col-4 small text-end">Order Status is {order.status}</h6>
                         </div>
                        <InventoryItemDonor food={order.orderList}></InventoryItemDonor>

@@ -4,12 +4,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 import {findDonorByUsernameThunk, updateDonorThunk} from "../services/donor-thunks";
 import userprofileReducer from '../reducers/userprofile-reducer';
+import { useLocation } from 'react-router';
 
 
 const  DonorProfilePublicPage = () => {
   const navigate = useNavigate()
 
-  const userName="starmarket"
+  const { pathname } = useLocation();
+  const paths = pathname.split('/');
+  const userName = paths[2];
+ // const userName="starmarket"
   const {donor, loading2} = useSelector((state) => state.donorsData);
   console.log(useSelector((state) => state.donor))
   const dispatch = useDispatch()
